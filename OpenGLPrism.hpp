@@ -1,0 +1,36 @@
+//
+//  OpenGLPrism.hpp
+//  OpenGLTutorial
+//
+//  Created by Robby Tong on 1/5/19.
+//  Copyright © 2019 Robby Tong. All rights reserved.
+//
+
+#ifndef OpenGLPrism_hpp
+#define OpenGLPrism_hpp
+
+#include <stdio.h>
+#include "OpenGLComposite.hpp"
+#include "OpenGLPrismWall.hpp"
+
+class OpenGLPrism: public OpenGLComposite
+{
+    typedef OpenGLPrimitive * (*PrismFaceGenerator)(float rgb[3], const char texture_filename[]);
+
+private:
+    OpenGLPrismWall * mWall;
+    OpenGLPrimitive * mBottomFace;
+    OpenGLPrimitive * mTopFace;
+    float mRgb[3];
+    
+public:
+    OpenGLPrism(PrismFaceGenerator generator,
+                glm::vec3 extrude_direction=glm::vec3(0.0, 1.0, 0.0),
+                float height=1.0f,
+                float rgb[3]=NULL,
+                const char texture_filename[]=NULL);
+    
+    ~OpenGLPrism();    
+};
+
+#endif /* OpenGLPrism_hpp */

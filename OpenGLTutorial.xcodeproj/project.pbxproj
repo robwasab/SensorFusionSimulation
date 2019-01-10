@@ -1,0 +1,1069 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1E596EC521D0208D00AAED6C /* 1_hello_window_main.c in Sources */ = {isa = PBXBuildFile; fileRef = 1E596EC421D0208D00AAED6C /* 1_hello_window_main.c */; };
+		1E596ECD21D020B400AAED6C /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E596ECC21D020B400AAED6C /* OpenGL.framework */; };
+		1E596ED521D0226D00AAED6C /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 1E596ED421D0226D00AAED6C /* glad.c */; };
+		1E596EDC21D07CF600AAED6C /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 1E596ED421D0226D00AAED6C /* glad.c */; };
+		1E596EDE21D07CF600AAED6C /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E596ECC21D020B400AAED6C /* OpenGL.framework */; };
+		1E596EE421D07D1500AAED6C /* 2_hello_triangles_main.c in Sources */ = {isa = PBXBuildFile; fileRef = 1E596ED821D07CE600AAED6C /* 2_hello_triangles_main.c */; };
+		1E596EEF21D18D7000AAED6C /* 3_shaders_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596EEE21D18D7000AAED6C /* 3_shaders_main.cpp */; };
+		1E596EF321D18E7F00AAED6C /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 1E596ED421D0226D00AAED6C /* glad.c */; };
+		1E596EF921D1A15600AAED6C /* OpenGLShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596EF721D1A15600AAED6C /* OpenGLShader.cpp */; };
+		1E596EFC21D2152E00AAED6C /* utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596EFA21D2152E00AAED6C /* utility.cpp */; };
+		1E596EFF21D2298700AAED6C /* stb_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596EFD21D2298700AAED6C /* stb_image.cpp */; };
+		1E596F0421D22A6A00AAED6C /* stb_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596EFD21D2298700AAED6C /* stb_image.cpp */; };
+		1E596F0521D22A6A00AAED6C /* OpenGLShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596EF721D1A15600AAED6C /* OpenGLShader.cpp */; };
+		1E596F0621D22A6A00AAED6C /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 1E596ED421D0226D00AAED6C /* glad.c */; };
+		1E596F0721D22A6A00AAED6C /* utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596EFA21D2152E00AAED6C /* utility.cpp */; };
+		1E596F0F21D22A7E00AAED6C /* 4_textures_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596F0121D22A5300AAED6C /* 4_textures_main.cpp */; };
+		1E596F1B21D36FB800AAED6C /* stb_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596EFD21D2298700AAED6C /* stb_image.cpp */; };
+		1E596F1C21D36FB800AAED6C /* OpenGLShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596EF721D1A15600AAED6C /* OpenGLShader.cpp */; };
+		1E596F1D21D36FB800AAED6C /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 1E596ED421D0226D00AAED6C /* glad.c */; };
+		1E596F1E21D36FB800AAED6C /* utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596EFA21D2152E00AAED6C /* utility.cpp */; };
+		1E596F2521D36FCF00AAED6C /* 5_transforms_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596F1521D36F0700AAED6C /* 5_transforms_main.cpp */; };
+		1E596F2E21D985AD00AAED6C /* stb_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596EFD21D2298700AAED6C /* stb_image.cpp */; };
+		1E596F2F21D985AD00AAED6C /* OpenGLShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596EF721D1A15600AAED6C /* OpenGLShader.cpp */; };
+		1E596F3021D985AD00AAED6C /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 1E596ED421D0226D00AAED6C /* glad.c */; };
+		1E596F3121D985AD00AAED6C /* utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596EFA21D2152E00AAED6C /* utility.cpp */; };
+		1E596F3821D985C300AAED6C /* 6_coordinate_systems_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596F2721D9852400AAED6C /* 6_coordinate_systems_main.cpp */; };
+		1E596F4021D9991500AAED6C /* OpenGLSquare.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596F3E21D9913300AAED6C /* OpenGLSquare.cpp */; };
+		1E596F4321DAD76000AAED6C /* OpenGLMeshTriangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596F4121DAC8C800AAED6C /* OpenGLMeshTriangle.cpp */; };
+		1E596F4821DB2FE400AAED6C /* OpenGLMeshSquare.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596F4621DB2F3100AAED6C /* OpenGLMeshSquare.cpp */; };
+		1E596F4B21DC4A6100AAED6C /* OpenGLPrimitive.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596F4921DC48E900AAED6C /* OpenGLPrimitive.cpp */; };
+		1E596F4E21DC506900AAED6C /* OpenGLComposite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596F4C21DC4EDB00AAED6C /* OpenGLComposite.cpp */; };
+		1E596F5121DC557A00AAED6C /* OpenGLMeshCube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596F4F21DC551500AAED6C /* OpenGLMeshCube.cpp */; };
+		1E596F5521DC74D900AAED6C /* OpenGLDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596F5321DC74CA00AAED6C /* OpenGLDelegate.cpp */; };
+		1E596F5821DDFE7700AAED6C /* OpenGLDrawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596F5721DDFE6C00AAED6C /* OpenGLDrawable.cpp */; };
+		1E596F5D21E11FB200AAED6C /* OpenGLSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596F5B21E11E7600AAED6C /* OpenGLSphere.cpp */; };
+		1E596F6121E1458400AAED6C /* OpenGLConehat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596F5F21E1455700AAED6C /* OpenGLConehat.cpp */; };
+		1E596F6421E14D3400AAED6C /* OpenGLCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596F6321E14CF300AAED6C /* OpenGLCircle.cpp */; };
+		1E596F6921E14E0F00AAED6C /* OpenGLCone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596F6721E14DE500AAED6C /* OpenGLCone.cpp */; };
+		1E596F7021E16B7000AAED6C /* OpenGLPrism.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596F6B21E1550300AAED6C /* OpenGLPrism.cpp */; };
+		1E596F7321E187BF00AAED6C /* OpenGLPrismWall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596F7121E1862900AAED6C /* OpenGLPrismWall.cpp */; };
+		1E596F7921E2CAFE00AAED6C /* OpenGLPrismCylinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596F7721E2C9A600AAED6C /* OpenGLPrismCylinder.cpp */; };
+		1E596F8021E3661F00AAED6C /* OpenGLArrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596F7E21E3661000AAED6C /* OpenGLArrow.cpp */; };
+		1E596F8421E3711500AAED6C /* OpenGLAxis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E596F8221E3710700AAED6C /* OpenGLAxis.cpp */; };
+		1ED58AAB21E809430075B7A7 /* OpenGLResource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1ED58AA921E808AF0075B7A7 /* OpenGLResource.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1E596EBF21D0208D00AAED6C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		1E596EDF21D07CF600AAED6C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		1E596EEA21D18D7000AAED6C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		1E596F0A21D22A6A00AAED6C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		1E596F2021D36FB800AAED6C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		1E596F3321D985AD00AAED6C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1E596EC121D0208D00AAED6C /* 1_HelloWindow */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 1_HelloWindow; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E596EC421D0208D00AAED6C /* 1_hello_window_main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = 1_hello_window_main.c; path = ../1_hello_window_main.c; sourceTree = "<group>"; };
+		1E596ECC21D020B400AAED6C /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		1E596ED021D0226D00AAED6C /* glad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = glad.h; path = ../../../glad/include/glad/glad.h; sourceTree = "<group>"; };
+		1E596ED421D0226D00AAED6C /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = glad.c; path = ../../../glad/src/glad.c; sourceTree = SOURCE_ROOT; };
+		1E596ED821D07CE600AAED6C /* 2_hello_triangles_main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = 2_hello_triangles_main.c; sourceTree = "<group>"; };
+		1E596EE321D07CF600AAED6C /* 2_HelloTriangle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 2_HelloTriangle; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E596EE521D087C700AAED6C /* 2_hello_triangles_vertex_shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = 2_hello_triangles_vertex_shader.fsh; sourceTree = "<group>"; };
+		1E596EE621D094B700AAED6C /* 2_hello_triangles_fragment_shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = 2_hello_triangles_fragment_shader.fsh; sourceTree = "<group>"; };
+		1E596EEC21D18D7000AAED6C /* 3_Shaders */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 3_Shaders; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E596EEE21D18D7000AAED6C /* 3_shaders_main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = 3_shaders_main.cpp; path = ../3_shaders_main.cpp; sourceTree = "<group>"; };
+		1E596EF421D1954000AAED6C /* 3_shaders_vertex_shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = 3_shaders_vertex_shader.fsh; sourceTree = SOURCE_ROOT; };
+		1E596EF521D1955500AAED6C /* 3_shaders_fragment_shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = 3_shaders_fragment_shader.fsh; sourceTree = SOURCE_ROOT; };
+		1E596EF721D1A15600AAED6C /* OpenGLShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLShader.cpp; sourceTree = "<group>"; };
+		1E596EF821D1A15600AAED6C /* OpenGLShader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpenGLShader.hpp; sourceTree = "<group>"; };
+		1E596EFA21D2152E00AAED6C /* utility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utility.cpp; sourceTree = "<group>"; };
+		1E596EFB21D2152E00AAED6C /* utility.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utility.hpp; sourceTree = "<group>"; };
+		1E596EFD21D2298700AAED6C /* stb_image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stb_image.cpp; sourceTree = "<group>"; };
+		1E596EFE21D2298700AAED6C /* stb_image.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = stb_image.hpp; sourceTree = "<group>"; };
+		1E596F0121D22A5300AAED6C /* 4_textures_main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 4_textures_main.cpp; sourceTree = "<group>"; };
+		1E596F0E21D22A6A00AAED6C /* 4_Textures */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 4_Textures; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E596F1021D22B1200AAED6C /* 4_textures_vertex_shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = 4_textures_vertex_shader.fsh; sourceTree = "<group>"; };
+		1E596F1121D22B2D00AAED6C /* 4_textures_fragment_shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = 4_textures_fragment_shader.fsh; sourceTree = "<group>"; };
+		1E596F1221D22C8B00AAED6C /* wooden_container.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wooden_container.jpg; sourceTree = "<group>"; };
+		1E596F1321D2A6EC00AAED6C /* awesome_face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = awesome_face.png; sourceTree = "<group>"; };
+		1E596F1521D36F0700AAED6C /* 5_transforms_main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 5_transforms_main.cpp; sourceTree = "<group>"; };
+		1E596F1621D36F2700AAED6C /* 5_transforms_vertex_shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = 5_transforms_vertex_shader.fsh; sourceTree = "<group>"; };
+		1E596F1721D36F3F00AAED6C /* 5_transforms_fragment_shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = 5_transforms_fragment_shader.fsh; sourceTree = "<group>"; };
+		1E596F2421D36FB800AAED6C /* 5_Transforms */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 5_Transforms; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E596F2721D9852400AAED6C /* 6_coordinate_systems_main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 6_coordinate_systems_main.cpp; sourceTree = "<group>"; };
+		1E596F2921D9854800AAED6C /* 6_coordinate_systems_vertex_shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = 6_coordinate_systems_vertex_shader.fsh; sourceTree = "<group>"; };
+		1E596F2A21D9856000AAED6C /* 6_coordinate_systems_fragment_shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = 6_coordinate_systems_fragment_shader.fsh; sourceTree = "<group>"; };
+		1E596F3721D985AD00AAED6C /* 6_CoordinateSystems */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 6_CoordinateSystems; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E596F3E21D9913300AAED6C /* OpenGLSquare.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLSquare.cpp; sourceTree = "<group>"; };
+		1E596F3F21D9913300AAED6C /* OpenGLSquare.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLSquare.hpp; sourceTree = "<group>"; };
+		1E596F4121DAC8C800AAED6C /* OpenGLMeshTriangle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLMeshTriangle.cpp; sourceTree = "<group>"; };
+		1E596F4221DAC8C800AAED6C /* OpenGLMeshTriangle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLMeshTriangle.hpp; sourceTree = "<group>"; };
+		1E596F4421DB26B400AAED6C /* OpenGLPrimitive_VertexShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = OpenGLPrimitive_VertexShader.fsh; sourceTree = "<group>"; };
+		1E596F4521DB26CB00AAED6C /* OpenGLPrimitive_FragmentShader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = OpenGLPrimitive_FragmentShader.fsh; sourceTree = "<group>"; };
+		1E596F4621DB2F3100AAED6C /* OpenGLMeshSquare.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLMeshSquare.cpp; sourceTree = "<group>"; };
+		1E596F4721DB2F3100AAED6C /* OpenGLMeshSquare.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLMeshSquare.hpp; sourceTree = "<group>"; };
+		1E596F4921DC48E900AAED6C /* OpenGLPrimitive.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLPrimitive.cpp; sourceTree = "<group>"; };
+		1E596F4A21DC48E900AAED6C /* OpenGLPrimitive.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLPrimitive.hpp; sourceTree = "<group>"; };
+		1E596F4C21DC4EDB00AAED6C /* OpenGLComposite.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLComposite.cpp; sourceTree = "<group>"; };
+		1E596F4D21DC4EDB00AAED6C /* OpenGLComposite.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLComposite.hpp; sourceTree = "<group>"; };
+		1E596F4F21DC551500AAED6C /* OpenGLMeshCube.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLMeshCube.cpp; sourceTree = "<group>"; };
+		1E596F5021DC551500AAED6C /* OpenGLMeshCube.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLMeshCube.hpp; sourceTree = "<group>"; };
+		1E596F5221DC6DDE00AAED6C /* Queue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
+		1E596F5321DC74CA00AAED6C /* OpenGLDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLDelegate.cpp; sourceTree = "<group>"; };
+		1E596F5421DC74CA00AAED6C /* OpenGLDelegate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLDelegate.hpp; sourceTree = "<group>"; };
+		1E596F5621DDFD8600AAED6C /* OpenGLDrawable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLDrawable.hpp; sourceTree = "<group>"; };
+		1E596F5721DDFE6C00AAED6C /* OpenGLDrawable.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLDrawable.cpp; sourceTree = "<group>"; };
+		1E596F5B21E11E7600AAED6C /* OpenGLSphere.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLSphere.cpp; sourceTree = "<group>"; };
+		1E596F5C21E11E7600AAED6C /* OpenGLSphere.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLSphere.hpp; sourceTree = "<group>"; };
+		1E596F5F21E1455700AAED6C /* OpenGLConehat.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLConehat.cpp; sourceTree = "<group>"; };
+		1E596F6021E1455700AAED6C /* OpenGLConehat.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLConehat.hpp; sourceTree = "<group>"; };
+		1E596F6221E14C4F00AAED6C /* OpenGLCircle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLCircle.hpp; sourceTree = "<group>"; };
+		1E596F6321E14CF300AAED6C /* OpenGLCircle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLCircle.cpp; sourceTree = "<group>"; };
+		1E596F6721E14DE500AAED6C /* OpenGLCone.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLCone.cpp; sourceTree = "<group>"; };
+		1E596F6821E14DE500AAED6C /* OpenGLCone.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLCone.hpp; sourceTree = "<group>"; };
+		1E596F6B21E1550300AAED6C /* OpenGLPrism.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLPrism.cpp; sourceTree = "<group>"; };
+		1E596F6C21E1550300AAED6C /* OpenGLPrism.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLPrism.hpp; sourceTree = "<group>"; };
+		1E596F7121E1862900AAED6C /* OpenGLPrismWall.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLPrismWall.cpp; sourceTree = "<group>"; };
+		1E596F7221E1862900AAED6C /* OpenGLPrismWall.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLPrismWall.hpp; sourceTree = "<group>"; };
+		1E596F7721E2C9A600AAED6C /* OpenGLPrismCylinder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLPrismCylinder.cpp; sourceTree = "<group>"; };
+		1E596F7821E2C9A600AAED6C /* OpenGLPrismCylinder.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLPrismCylinder.hpp; sourceTree = "<group>"; };
+		1E596F7B21E3618700AAED6C /* earth_high_resolution.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = earth_high_resolution.jpg; sourceTree = "<group>"; };
+		1E596F7C21E3618700AAED6C /* earth_low_resolution.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = earth_low_resolution.jpg; sourceTree = "<group>"; };
+		1E596F7E21E3661000AAED6C /* OpenGLArrow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLArrow.cpp; sourceTree = "<group>"; };
+		1E596F7F21E3661000AAED6C /* OpenGLArrow.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLArrow.hpp; sourceTree = "<group>"; };
+		1E596F8221E3710700AAED6C /* OpenGLAxis.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLAxis.cpp; sourceTree = "<group>"; };
+		1E596F8321E3710700AAED6C /* OpenGLAxis.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLAxis.hpp; sourceTree = "<group>"; };
+		1ED58AA921E808AF0075B7A7 /* OpenGLResource.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLResource.cpp; sourceTree = "<group>"; };
+		1ED58AAA21E808AF0075B7A7 /* OpenGLResource.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenGLResource.hpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1E596EBE21D0208D00AAED6C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E596ECD21D020B400AAED6C /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E596EDD21D07CF600AAED6C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E596EDE21D07CF600AAED6C /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E596EE921D18D7000AAED6C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E596F0921D22A6A00AAED6C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E596F1F21D36FB800AAED6C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E596F3221D985AD00AAED6C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1E596EB821D0208D00AAED6C = {
+			isa = PBXGroup;
+			children = (
+				1E596F7A21E3616200AAED6C /* Textures */,
+				1E596EF621D1A12900AAED6C /* Utilities */,
+				1E596ED621D0227D00AAED6C /* GLAD */,
+				1E596EC321D0208D00AAED6C /* 1_HelloWindow */,
+				1E596ED721D07CC300AAED6C /* 2_HelloTriangle */,
+				1E596EED21D18D7000AAED6C /* 3_Shaders */,
+				1E596F0021D22A2A00AAED6C /* 4_Textures */,
+				1E596F1421D36EBB00AAED6C /* 5_Transforms */,
+				1E596F2621D984F700AAED6C /* 6_CoordinateSystems */,
+				1E596EC221D0208D00AAED6C /* Products */,
+				1E596ECB21D020B400AAED6C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1E596EC221D0208D00AAED6C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1E596EC121D0208D00AAED6C /* 1_HelloWindow */,
+				1E596EE321D07CF600AAED6C /* 2_HelloTriangle */,
+				1E596EEC21D18D7000AAED6C /* 3_Shaders */,
+				1E596F0E21D22A6A00AAED6C /* 4_Textures */,
+				1E596F2421D36FB800AAED6C /* 5_Transforms */,
+				1E596F3721D985AD00AAED6C /* 6_CoordinateSystems */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1E596EC321D0208D00AAED6C /* 1_HelloWindow */ = {
+			isa = PBXGroup;
+			children = (
+				1E596EC421D0208D00AAED6C /* 1_hello_window_main.c */,
+			);
+			name = 1_HelloWindow;
+			path = HelloWindow;
+			sourceTree = "<group>";
+		};
+		1E596ECB21D020B400AAED6C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1E596ECC21D020B400AAED6C /* OpenGL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1E596ECE21D0226D00AAED6C /* include */ = {
+			isa = PBXGroup;
+			children = (
+				1E596ED021D0226D00AAED6C /* glad.h */,
+			);
+			name = include;
+			path = ../../../../glad/include;
+			sourceTree = "<group>";
+		};
+		1E596ED321D0226D00AAED6C /* src */ = {
+			isa = PBXGroup;
+			children = (
+				1E596ED421D0226D00AAED6C /* glad.c */,
+			);
+			name = src;
+			path = ../../../../glad/src;
+			sourceTree = "<group>";
+		};
+		1E596ED621D0227D00AAED6C /* GLAD */ = {
+			isa = PBXGroup;
+			children = (
+				1E596ECE21D0226D00AAED6C /* include */,
+				1E596ED321D0226D00AAED6C /* src */,
+			);
+			name = GLAD;
+			sourceTree = "<group>";
+		};
+		1E596ED721D07CC300AAED6C /* 2_HelloTriangle */ = {
+			isa = PBXGroup;
+			children = (
+				1E596ED821D07CE600AAED6C /* 2_hello_triangles_main.c */,
+				1E596EE521D087C700AAED6C /* 2_hello_triangles_vertex_shader.fsh */,
+				1E596EE621D094B700AAED6C /* 2_hello_triangles_fragment_shader.fsh */,
+			);
+			name = 2_HelloTriangle;
+			sourceTree = "<group>";
+		};
+		1E596EED21D18D7000AAED6C /* 3_Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				1E596EEE21D18D7000AAED6C /* 3_shaders_main.cpp */,
+				1E596EF421D1954000AAED6C /* 3_shaders_vertex_shader.fsh */,
+				1E596EF521D1955500AAED6C /* 3_shaders_fragment_shader.fsh */,
+			);
+			path = 3_Shaders;
+			sourceTree = "<group>";
+		};
+		1E596EF621D1A12900AAED6C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				1E596EF721D1A15600AAED6C /* OpenGLShader.cpp */,
+				1E596EF821D1A15600AAED6C /* OpenGLShader.hpp */,
+				1E596F5221DC6DDE00AAED6C /* Queue.h */,
+				1E596F5321DC74CA00AAED6C /* OpenGLDelegate.cpp */,
+				1E596F5421DC74CA00AAED6C /* OpenGLDelegate.hpp */,
+				1E596EFA21D2152E00AAED6C /* utility.cpp */,
+				1E596EFB21D2152E00AAED6C /* utility.hpp */,
+				1E596F3E21D9913300AAED6C /* OpenGLSquare.cpp */,
+				1E596F3F21D9913300AAED6C /* OpenGLSquare.hpp */,
+				1E596F5621DDFD8600AAED6C /* OpenGLDrawable.hpp */,
+				1E596F5721DDFE6C00AAED6C /* OpenGLDrawable.cpp */,
+				1E596F4C21DC4EDB00AAED6C /* OpenGLComposite.cpp */,
+				1E596F4D21DC4EDB00AAED6C /* OpenGLComposite.hpp */,
+				1E596F5E21E144C500AAED6C /* OpenGLShapes */,
+				1E596F5921E11D8E00AAED6C /* OpenGLMeshCube */,
+				1E596F5A21E11DB400AAED6C /* OpenGLPrimitive */,
+				1ED58AA821E8088B0075B7A7 /* OpenGLResource */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		1E596F0021D22A2A00AAED6C /* 4_Textures */ = {
+			isa = PBXGroup;
+			children = (
+				1E596F0121D22A5300AAED6C /* 4_textures_main.cpp */,
+				1E596F1021D22B1200AAED6C /* 4_textures_vertex_shader.fsh */,
+				1E596F1121D22B2D00AAED6C /* 4_textures_fragment_shader.fsh */,
+				1E596F1221D22C8B00AAED6C /* wooden_container.jpg */,
+				1E596F1321D2A6EC00AAED6C /* awesome_face.png */,
+			);
+			name = 4_Textures;
+			sourceTree = "<group>";
+		};
+		1E596F1421D36EBB00AAED6C /* 5_Transforms */ = {
+			isa = PBXGroup;
+			children = (
+				1E596F1521D36F0700AAED6C /* 5_transforms_main.cpp */,
+				1E596F1621D36F2700AAED6C /* 5_transforms_vertex_shader.fsh */,
+				1E596F1721D36F3F00AAED6C /* 5_transforms_fragment_shader.fsh */,
+			);
+			name = 5_Transforms;
+			sourceTree = "<group>";
+		};
+		1E596F2621D984F700AAED6C /* 6_CoordinateSystems */ = {
+			isa = PBXGroup;
+			children = (
+				1E596F2721D9852400AAED6C /* 6_coordinate_systems_main.cpp */,
+				1E596F2921D9854800AAED6C /* 6_coordinate_systems_vertex_shader.fsh */,
+				1E596F2A21D9856000AAED6C /* 6_coordinate_systems_fragment_shader.fsh */,
+			);
+			name = 6_CoordinateSystems;
+			sourceTree = "<group>";
+		};
+		1E596F5921E11D8E00AAED6C /* OpenGLMeshCube */ = {
+			isa = PBXGroup;
+			children = (
+				1E596F4121DAC8C800AAED6C /* OpenGLMeshTriangle.cpp */,
+				1E596F4221DAC8C800AAED6C /* OpenGLMeshTriangle.hpp */,
+				1E596F4621DB2F3100AAED6C /* OpenGLMeshSquare.cpp */,
+				1E596F4721DB2F3100AAED6C /* OpenGLMeshSquare.hpp */,
+				1E596F4F21DC551500AAED6C /* OpenGLMeshCube.cpp */,
+				1E596F5021DC551500AAED6C /* OpenGLMeshCube.hpp */,
+			);
+			name = OpenGLMeshCube;
+			sourceTree = "<group>";
+		};
+		1E596F5A21E11DB400AAED6C /* OpenGLPrimitive */ = {
+			isa = PBXGroup;
+			children = (
+				1E596EFD21D2298700AAED6C /* stb_image.cpp */,
+				1E596EFE21D2298700AAED6C /* stb_image.hpp */,
+				1E596F4421DB26B400AAED6C /* OpenGLPrimitive_VertexShader.fsh */,
+				1E596F4521DB26CB00AAED6C /* OpenGLPrimitive_FragmentShader.fsh */,
+				1E596F4A21DC48E900AAED6C /* OpenGLPrimitive.hpp */,
+				1E596F4921DC48E900AAED6C /* OpenGLPrimitive.cpp */,
+			);
+			name = OpenGLPrimitive;
+			sourceTree = "<group>";
+		};
+		1E596F5E21E144C500AAED6C /* OpenGLShapes */ = {
+			isa = PBXGroup;
+			children = (
+				1E596F8121E370CB00AAED6C /* Axis */,
+				1E596F7D21E365EE00AAED6C /* Arrow */,
+				1E596F6A21E154EF00AAED6C /* Prism */,
+				1E596F6621E14DC700AAED6C /* Cone */,
+				1E596F6521E14DBC00AAED6C /* Sphere */,
+			);
+			name = OpenGLShapes;
+			sourceTree = "<group>";
+		};
+		1E596F6521E14DBC00AAED6C /* Sphere */ = {
+			isa = PBXGroup;
+			children = (
+				1E596F5B21E11E7600AAED6C /* OpenGLSphere.cpp */,
+				1E596F5C21E11E7600AAED6C /* OpenGLSphere.hpp */,
+			);
+			name = Sphere;
+			sourceTree = "<group>";
+		};
+		1E596F6621E14DC700AAED6C /* Cone */ = {
+			isa = PBXGroup;
+			children = (
+				1E596F5F21E1455700AAED6C /* OpenGLConehat.cpp */,
+				1E596F6021E1455700AAED6C /* OpenGLConehat.hpp */,
+				1E596F6221E14C4F00AAED6C /* OpenGLCircle.hpp */,
+				1E596F6321E14CF300AAED6C /* OpenGLCircle.cpp */,
+				1E596F6721E14DE500AAED6C /* OpenGLCone.cpp */,
+				1E596F6821E14DE500AAED6C /* OpenGLCone.hpp */,
+			);
+			name = Cone;
+			sourceTree = "<group>";
+		};
+		1E596F6A21E154EF00AAED6C /* Prism */ = {
+			isa = PBXGroup;
+			children = (
+				1E596F6B21E1550300AAED6C /* OpenGLPrism.cpp */,
+				1E596F6C21E1550300AAED6C /* OpenGLPrism.hpp */,
+				1E596F7121E1862900AAED6C /* OpenGLPrismWall.cpp */,
+				1E596F7221E1862900AAED6C /* OpenGLPrismWall.hpp */,
+				1E596F7721E2C9A600AAED6C /* OpenGLPrismCylinder.cpp */,
+				1E596F7821E2C9A600AAED6C /* OpenGLPrismCylinder.hpp */,
+			);
+			name = Prism;
+			sourceTree = "<group>";
+		};
+		1E596F7A21E3616200AAED6C /* Textures */ = {
+			isa = PBXGroup;
+			children = (
+				1E596F7B21E3618700AAED6C /* earth_high_resolution.jpg */,
+				1E596F7C21E3618700AAED6C /* earth_low_resolution.jpg */,
+			);
+			name = Textures;
+			sourceTree = "<group>";
+		};
+		1E596F7D21E365EE00AAED6C /* Arrow */ = {
+			isa = PBXGroup;
+			children = (
+				1E596F7E21E3661000AAED6C /* OpenGLArrow.cpp */,
+				1E596F7F21E3661000AAED6C /* OpenGLArrow.hpp */,
+			);
+			name = Arrow;
+			sourceTree = "<group>";
+		};
+		1E596F8121E370CB00AAED6C /* Axis */ = {
+			isa = PBXGroup;
+			children = (
+				1E596F8221E3710700AAED6C /* OpenGLAxis.cpp */,
+				1E596F8321E3710700AAED6C /* OpenGLAxis.hpp */,
+			);
+			name = Axis;
+			sourceTree = "<group>";
+		};
+		1ED58AA821E8088B0075B7A7 /* OpenGLResource */ = {
+			isa = PBXGroup;
+			children = (
+				1ED58AA921E808AF0075B7A7 /* OpenGLResource.cpp */,
+				1ED58AAA21E808AF0075B7A7 /* OpenGLResource.hpp */,
+			);
+			name = OpenGLResource;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1E596EC021D0208D00AAED6C /* 1_HelloWindow */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E596EC821D0208D00AAED6C /* Build configuration list for PBXNativeTarget "1_HelloWindow" */;
+			buildPhases = (
+				1E596EBD21D0208D00AAED6C /* Sources */,
+				1E596EBE21D0208D00AAED6C /* Frameworks */,
+				1E596EBF21D0208D00AAED6C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = 1_HelloWindow;
+			productName = HelloWindow;
+			productReference = 1E596EC121D0208D00AAED6C /* 1_HelloWindow */;
+			productType = "com.apple.product-type.tool";
+		};
+		1E596ED921D07CF600AAED6C /* 2_HelloTriangle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E596EE021D07CF600AAED6C /* Build configuration list for PBXNativeTarget "2_HelloTriangle" */;
+			buildPhases = (
+				1E596EDA21D07CF600AAED6C /* Sources */,
+				1E596EDD21D07CF600AAED6C /* Frameworks */,
+				1E596EDF21D07CF600AAED6C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = 2_HelloTriangle;
+			productName = HelloWindow;
+			productReference = 1E596EE321D07CF600AAED6C /* 2_HelloTriangle */;
+			productType = "com.apple.product-type.tool";
+		};
+		1E596EEB21D18D7000AAED6C /* 3_Shaders */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E596EF021D18D7000AAED6C /* Build configuration list for PBXNativeTarget "3_Shaders" */;
+			buildPhases = (
+				1E596EE821D18D7000AAED6C /* Sources */,
+				1E596EE921D18D7000AAED6C /* Frameworks */,
+				1E596EEA21D18D7000AAED6C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = 3_Shaders;
+			productName = 3_Shaders;
+			productReference = 1E596EEC21D18D7000AAED6C /* 3_Shaders */;
+			productType = "com.apple.product-type.tool";
+		};
+		1E596F0221D22A6A00AAED6C /* 4_Textures */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E596F0B21D22A6A00AAED6C /* Build configuration list for PBXNativeTarget "4_Textures" */;
+			buildPhases = (
+				1E596F0321D22A6A00AAED6C /* Sources */,
+				1E596F0921D22A6A00AAED6C /* Frameworks */,
+				1E596F0A21D22A6A00AAED6C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = 4_Textures;
+			productName = 3_Shaders;
+			productReference = 1E596F0E21D22A6A00AAED6C /* 4_Textures */;
+			productType = "com.apple.product-type.tool";
+		};
+		1E596F1821D36FB800AAED6C /* 5_Transforms */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E596F2121D36FB800AAED6C /* Build configuration list for PBXNativeTarget "5_Transforms" */;
+			buildPhases = (
+				1E596F1921D36FB800AAED6C /* Sources */,
+				1E596F1F21D36FB800AAED6C /* Frameworks */,
+				1E596F2021D36FB800AAED6C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = 5_Transforms;
+			productName = 3_Shaders;
+			productReference = 1E596F2421D36FB800AAED6C /* 5_Transforms */;
+			productType = "com.apple.product-type.tool";
+		};
+		1E596F2B21D985AD00AAED6C /* 6_CoordinateSystems */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E596F3421D985AD00AAED6C /* Build configuration list for PBXNativeTarget "6_CoordinateSystems" */;
+			buildPhases = (
+				1E596F2C21D985AD00AAED6C /* Sources */,
+				1E596F3221D985AD00AAED6C /* Frameworks */,
+				1E596F3321D985AD00AAED6C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = 6_CoordinateSystems;
+			productName = 3_Shaders;
+			productReference = 1E596F3721D985AD00AAED6C /* 6_CoordinateSystems */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1E596EB921D0208D00AAED6C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Robby Tong";
+				TargetAttributes = {
+					1E596EC021D0208D00AAED6C = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = BZ43VN2TVC;
+						ProvisioningStyle = Automatic;
+					};
+					1E596ED921D07CF600AAED6C = {
+						DevelopmentTeam = BZ43VN2TVC;
+					};
+					1E596EEB21D18D7000AAED6C = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = BZ43VN2TVC;
+						ProvisioningStyle = Automatic;
+					};
+					1E596F0221D22A6A00AAED6C = {
+						DevelopmentTeam = BZ43VN2TVC;
+					};
+					1E596F1821D36FB800AAED6C = {
+						DevelopmentTeam = BZ43VN2TVC;
+					};
+					1E596F2B21D985AD00AAED6C = {
+						DevelopmentTeam = BZ43VN2TVC;
+					};
+				};
+			};
+			buildConfigurationList = 1E596EBC21D0208D00AAED6C /* Build configuration list for PBXProject "OpenGLTutorial" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1E596EB821D0208D00AAED6C;
+			productRefGroup = 1E596EC221D0208D00AAED6C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1E596EC021D0208D00AAED6C /* 1_HelloWindow */,
+				1E596ED921D07CF600AAED6C /* 2_HelloTriangle */,
+				1E596EEB21D18D7000AAED6C /* 3_Shaders */,
+				1E596F0221D22A6A00AAED6C /* 4_Textures */,
+				1E596F1821D36FB800AAED6C /* 5_Transforms */,
+				1E596F2B21D985AD00AAED6C /* 6_CoordinateSystems */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1E596EBD21D0208D00AAED6C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E596EC521D0208D00AAED6C /* 1_hello_window_main.c in Sources */,
+				1E596ED521D0226D00AAED6C /* glad.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E596EDA21D07CF600AAED6C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E596EE421D07D1500AAED6C /* 2_hello_triangles_main.c in Sources */,
+				1E596EDC21D07CF600AAED6C /* glad.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E596EE821D18D7000AAED6C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E596EFF21D2298700AAED6C /* stb_image.cpp in Sources */,
+				1E596EF921D1A15600AAED6C /* OpenGLShader.cpp in Sources */,
+				1E596EF321D18E7F00AAED6C /* glad.c in Sources */,
+				1E596EFC21D2152E00AAED6C /* utility.cpp in Sources */,
+				1E596EEF21D18D7000AAED6C /* 3_shaders_main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E596F0321D22A6A00AAED6C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E596F0F21D22A7E00AAED6C /* 4_textures_main.cpp in Sources */,
+				1E596F0421D22A6A00AAED6C /* stb_image.cpp in Sources */,
+				1E596F0521D22A6A00AAED6C /* OpenGLShader.cpp in Sources */,
+				1E596F0621D22A6A00AAED6C /* glad.c in Sources */,
+				1E596F0721D22A6A00AAED6C /* utility.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E596F1921D36FB800AAED6C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E596F2521D36FCF00AAED6C /* 5_transforms_main.cpp in Sources */,
+				1E596F1B21D36FB800AAED6C /* stb_image.cpp in Sources */,
+				1E596F1C21D36FB800AAED6C /* OpenGLShader.cpp in Sources */,
+				1E596F1D21D36FB800AAED6C /* glad.c in Sources */,
+				1E596F1E21D36FB800AAED6C /* utility.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E596F2C21D985AD00AAED6C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1ED58AAB21E809430075B7A7 /* OpenGLResource.cpp in Sources */,
+				1E596F8421E3711500AAED6C /* OpenGLAxis.cpp in Sources */,
+				1E596F8021E3661F00AAED6C /* OpenGLArrow.cpp in Sources */,
+				1E596F7921E2CAFE00AAED6C /* OpenGLPrismCylinder.cpp in Sources */,
+				1E596F7321E187BF00AAED6C /* OpenGLPrismWall.cpp in Sources */,
+				1E596F7021E16B7000AAED6C /* OpenGLPrism.cpp in Sources */,
+				1E596F6921E14E0F00AAED6C /* OpenGLCone.cpp in Sources */,
+				1E596F6421E14D3400AAED6C /* OpenGLCircle.cpp in Sources */,
+				1E596F6121E1458400AAED6C /* OpenGLConehat.cpp in Sources */,
+				1E596F5D21E11FB200AAED6C /* OpenGLSphere.cpp in Sources */,
+				1E596F5821DDFE7700AAED6C /* OpenGLDrawable.cpp in Sources */,
+				1E596F5521DC74D900AAED6C /* OpenGLDelegate.cpp in Sources */,
+				1E596F5121DC557A00AAED6C /* OpenGLMeshCube.cpp in Sources */,
+				1E596F4E21DC506900AAED6C /* OpenGLComposite.cpp in Sources */,
+				1E596F4B21DC4A6100AAED6C /* OpenGLPrimitive.cpp in Sources */,
+				1E596F4821DB2FE400AAED6C /* OpenGLMeshSquare.cpp in Sources */,
+				1E596F4321DAD76000AAED6C /* OpenGLMeshTriangle.cpp in Sources */,
+				1E596F4021D9991500AAED6C /* OpenGLSquare.cpp in Sources */,
+				1E596F3821D985C300AAED6C /* 6_coordinate_systems_main.cpp in Sources */,
+				1E596F2E21D985AD00AAED6C /* stb_image.cpp in Sources */,
+				1E596F2F21D985AD00AAED6C /* OpenGLShader.cpp in Sources */,
+				1E596F3021D985AD00AAED6C /* glad.c in Sources */,
+				1E596F3121D985AD00AAED6C /* utility.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1E596EC621D0208D00AAED6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		1E596EC721D0208D00AAED6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		1E596EC921D0208D00AAED6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = BZ43VN2TVC;
+				HEADER_SEARCH_PATHS = (
+					/Users/robbytong/Documents/OpenGL/glad/include,
+					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				"OTHER_LDFLAGS[arch=*]" = "-lglfw";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1E596ECA21D0208D00AAED6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = BZ43VN2TVC;
+				HEADER_SEARCH_PATHS = (
+					/Users/robbytong/Documents/OpenGL/glad/include,
+					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		1E596EE121D07CF600AAED6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = BZ43VN2TVC;
+				HEADER_SEARCH_PATHS = (
+					/Users/robbytong/Documents/OpenGL/glad/include,
+					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				"OTHER_LDFLAGS[arch=*]" = "-lglfw";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1E596EE221D07CF600AAED6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = BZ43VN2TVC;
+				HEADER_SEARCH_PATHS = (
+					/Users/robbytong/Documents/OpenGL/glad/include,
+					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		1E596EF121D18D7000AAED6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = BZ43VN2TVC;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					"\"$(SRCROOT)/../../../glad/include\"",
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = "-lglfw";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1E596EF221D18D7000AAED6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = BZ43VN2TVC;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					"\"$(SRCROOT)/../../../glad/include\"",
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = "-lglfw";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		1E596F0C21D22A6A00AAED6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = BZ43VN2TVC;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					"\"$(SRCROOT)/../../../glad/include\"",
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = "-lglfw";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1E596F0D21D22A6A00AAED6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = BZ43VN2TVC;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					"\"$(SRCROOT)/../../../glad/include\"",
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = "-lglfw";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		1E596F2221D36FB800AAED6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = BZ43VN2TVC;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					"\"$(SRCROOT)/../../../glad/include\"",
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = "-lglfw";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1E596F2321D36FB800AAED6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = BZ43VN2TVC;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					"\"$(SRCROOT)/../../../glad/include\"",
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = "-lglfw";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		1E596F3521D985AD00AAED6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = BZ43VN2TVC;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					"\"$(SRCROOT)/../../../glad/include\"",
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = "-lglfw";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1E596F3621D985AD00AAED6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = BZ43VN2TVC;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					"\"$(SRCROOT)/../../../glad/include\"",
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = "-lglfw";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1E596EBC21D0208D00AAED6C /* Build configuration list for PBXProject "OpenGLTutorial" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E596EC621D0208D00AAED6C /* Debug */,
+				1E596EC721D0208D00AAED6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1E596EC821D0208D00AAED6C /* Build configuration list for PBXNativeTarget "1_HelloWindow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E596EC921D0208D00AAED6C /* Debug */,
+				1E596ECA21D0208D00AAED6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1E596EE021D07CF600AAED6C /* Build configuration list for PBXNativeTarget "2_HelloTriangle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E596EE121D07CF600AAED6C /* Debug */,
+				1E596EE221D07CF600AAED6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1E596EF021D18D7000AAED6C /* Build configuration list for PBXNativeTarget "3_Shaders" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E596EF121D18D7000AAED6C /* Debug */,
+				1E596EF221D18D7000AAED6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1E596F0B21D22A6A00AAED6C /* Build configuration list for PBXNativeTarget "4_Textures" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E596F0C21D22A6A00AAED6C /* Debug */,
+				1E596F0D21D22A6A00AAED6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1E596F2121D36FB800AAED6C /* Build configuration list for PBXNativeTarget "5_Transforms" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E596F2221D36FB800AAED6C /* Debug */,
+				1E596F2321D36FB800AAED6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1E596F3421D985AD00AAED6C /* Build configuration list for PBXNativeTarget "6_CoordinateSystems" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E596F3521D985AD00AAED6C /* Debug */,
+				1E596F3621D985AD00AAED6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1E596EB921D0208D00AAED6C /* Project object */;
+}
