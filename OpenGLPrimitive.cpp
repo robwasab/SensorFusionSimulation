@@ -184,6 +184,9 @@ void OpenGLPrimitive::drawWithShaderAndTransform(glm::mat4 view_transform)
         mShader->setInt("uniform_texture", 0);
     }
     
+    // we want the color of whatever the texture or vertex color says
+    mShader->setFloat("uniform_color_scale", 1.0);
+    
     // set the uniform color ratio
     mShader->setFloat("uniform_color_ratio", mColorTextureRatio);
     
@@ -191,6 +194,14 @@ void OpenGLPrimitive::drawWithShaderAndTransform(glm::mat4 view_transform)
     glPolygonMode(GL_FRONT_AND_BACK, mPolygonMode);
     
     glDrawArrays(mDrawingMode, 0, (GLsizei) mNumVerticies);
+    
+    if(false == mTextureEnabled)
+    {
+        // we want black
+        mShader->setFloat("uniform_color_scale", 0.0);
+        
+        glDrawArrays(GL_LINES, 0, (GLsizei) mNumVerticies);
+    }
 }
 
 void OpenGLPrimitive::drawNormalsWithTransform(glm::mat4 view_transform)

@@ -7,11 +7,12 @@ out vec3 color;
 out vec2 texture_location;
 
 uniform mat4 transform;
+uniform float uniform_color_scale;
 
 void main()
 {
     gl_Position = transform * vec4(attr_position, 1.0);
     
-    color = attr_color;
+    color = uniform_color_scale * attr_color;
     texture_location = attr_texture;
 }
