@@ -28,19 +28,23 @@
 #include "OpenGLArrow.hpp"
 #include "OpenGLAxis.hpp"
 #include "OpenGLMath.hpp"
+#include "OpenGLCircle.hpp"
+#include "OpenGLSquare.hpp"
+#include "OpenGLIPhoneFace.hpp"
 
 class MyOpenGLDelegate: public OpenGLDelegate
 {
 private:
-    OpenGLMeshSquare * mSquare;
     OpenGLMeshCube * mCube;
     OpenGLSphere * mSphere;
     OpenGLCone * mCone;
     OpenGLPrismCylinder * mCylinder;
     OpenGLArrow * mArrow;
     OpenGLAxis * mAxis;
-    
+    OpenGLCircle * mCircle;
+    OpenGLSquare * mSquare;
     OpenGLSphere * mLightSource;
+    OpenGLIphoneFace * mIphoneFace;
 public:
     
     MyOpenGLDelegate():
@@ -64,7 +68,7 @@ public:
     
     void initialized(GLFWwindow * window)
     {
-        mSquare = new OpenGLMeshSquare();
+        mSquare = new OpenGLSquare(OpenGLPrimitive::COLOR_GREY, TEXTURE_IPHONE_FACE);
         mSquare->setScale(0.5);
         
         mCube = new OpenGLMeshCube();
@@ -89,10 +93,14 @@ public:
         mAxis->setScale(0.75);
         
         mLightSource = new OpenGLSphere(20, OpenGLPrimitive::COLOR_YELLOW);
-        mLightSource->setScale(0.10);
+        mLightSource->setScale(0.5);
         mLightSource->setPosition(2, 1, -4);
         
         mArrow->setVectorDimensions(2, 1, -4);
+        
+        mCircle = new OpenGLCircle(4, OpenGLPrimitive::COLOR_GREEN);
+        
+        mIphoneFace = new OpenGLIphoneFace();
     }
     
     void windowFrameBufferResized(GLFWwindow * window, int width, int height)
@@ -110,10 +118,10 @@ public:
         mLightSource->drawWithShaderAndTransform(view_transform);
         
         //mSquare->drawWithShaderAndTransform(view_transform);
+        mIphoneFace->drawWithShaderAndTransform(view_transform);
         //mCube->drawWithShaderAndTransform(view_transform);
-        mSphere->drawWithShaderAndTransform(view_transform);
-        mSphere->drawNormalsWithTransform(view_transform);
-        
+        //mSphere->drawWithShaderAndTransform(view_transform);
+        //mCircle->drawWithShaderAndTransform(view_transform);
         //mCone->drawWithShaderAndTransform(view_transform);
         //mCylinder->drawWithShaderAndTransform(view_transform);
         //mArrow->drawWithShaderAndTransform(view_transform);

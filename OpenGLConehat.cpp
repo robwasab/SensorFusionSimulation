@@ -46,7 +46,6 @@ void OpenGLConehat::initializeVerticies(std::vector<OpenGLVertexAttributes> * ve
 {
     *drawing_mode = GL_TRIANGLE_FAN;
     *polygon_mode = GL_FILL;
-    *mColorTextureRatio = 0;
     
     OpenGLVertexAttributes vertex;
     
@@ -70,7 +69,7 @@ void OpenGLConehat::initializeVerticies(std::vector<OpenGLVertexAttributes> * ve
         float y;
         float z;
         
-        float phi = phiStepNum * mPhiStepRadian;
+        float phi = (phiStepNum * mPhiStepRadian) + M_PI / 4.0;
         
         x = cos(phi);
         z = sin(phi);
@@ -84,5 +83,23 @@ void OpenGLConehat::initializeVerticies(std::vector<OpenGLVertexAttributes> * ve
         vertex.textureLocation[1] = z;
         
         verticies->push_back(vertex);
+    }
+    
+    std::vector<OpenGLVertexAttributes>::iterator iterator;
+    
+    for(iterator = verticies->begin(); iterator != verticies->end(); iterator++)
+    {
+        
+        OpenGLVertexAttributes attr = *iterator;
+        attr.textureLocation[0] *= sqrt(2);
+        attr.textureLocation[1] *= sqrt(2);
+        
+        attr.textureLocation[0] += 1;
+        attr.textureLocation[1] += 1;
+        
+        attr.textureLocation[0] /= 2.0;
+        attr.textureLocation[1] /= 2.0;
+        
+        *iterator = attr;
     }
 }

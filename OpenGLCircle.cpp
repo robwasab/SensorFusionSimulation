@@ -12,7 +12,8 @@ static float circle_center[3] = {0.0f, 0.0f, 0.0f};
 
 OpenGLCircle::OpenGLCircle(int pts_per_revolution,
                            float rgb[3],
-                           const char texture_filename[]):
+                           const char texture_filename[],
+                           bool finish_initializing):
 OpenGLConehat(pts_per_revolution,
               rgb,
               texture_filename,
@@ -20,7 +21,11 @@ OpenGLConehat(pts_per_revolution,
               false)
 {
     mPrismEdge = NULL;
-    finishInitializing();
+    
+    if(true == finish_initializing)
+    {
+        finishInitializing();
+    }
 }
 
 void OpenGLCircle::initializeVerticies(std::vector<OpenGLVertexAttributes> * verticies,

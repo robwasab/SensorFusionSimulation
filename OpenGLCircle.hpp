@@ -19,7 +19,8 @@ private:
 public:
     OpenGLCircle(int pts_per_revolution=50,
                  float rgb[3]=NULL,
-                 const char texture_filename[]=NULL);
+                 const char texture_filename[]=NULL,
+                 bool finish_initializing=true);
    
     virtual void initializeVerticies(std::vector<OpenGLVertexAttributes> * verticies,
                                      const float rgb[],

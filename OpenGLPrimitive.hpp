@@ -19,6 +19,8 @@
 
 #define TEXTURE_EARTH "/Users/robbytong/Documents/OpenGL/Tutorials/LearnOpenGL/XCode/earth_low_resolution.jpg"
 
+#define TEXTURE_IPHONE_FACE "/Users/robbytong/Documents/OpenGL/Tutorials/LearnOpenGL/XCode/iphone_face.jpg"
+
 struct OpenGLVertexAttributes
 {
     float position[3];
