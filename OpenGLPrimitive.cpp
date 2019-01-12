@@ -9,6 +9,7 @@
 #include "OpenGLPrimitive.hpp"
 #include "OpenGLShader.hpp"
 #include "stb_image.hpp"
+#include "OpenGLArrow.hpp"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -71,6 +72,7 @@ OpenGLPrimitive::OpenGLPrimitive(float rgb[], const char texture_filename[])
     mPolygonMode = GL_LINE;
     mColorTextureRatio = 1.0;
     mFinishedInitializing = false;
+    mNormalArrow = NULL;
 }
 
 void OpenGLPrimitive::finishInitializing(void)
@@ -148,6 +150,10 @@ OpenGLPrimitive::~OpenGLPrimitive()
     glDeleteBuffers(1, &mVBO);
     glDeleteVertexArrays(1, &mVAO);
     glDeleteTextures(1, &mTextureId);
+    if(NULL != mNormalArrow)
+    {
+        delete mNormalArrow;
+    }
     delete [] mVerticies;
 }
 
@@ -185,6 +191,31 @@ void OpenGLPrimitive::drawWithShaderAndTransform(glm::mat4 view_transform)
     glPolygonMode(GL_FRONT_AND_BACK, mPolygonMode);
     
     glDrawArrays(mDrawingMode, 0, (GLsizei) mNumVerticies);
+}
+
+void OpenGLPrimitive::drawNormalsWithTransform(glm::mat4 view_transform)
+{
+    assert(mFinishedInitializing == true);
+    
+    if(mNormalArrow == NULL)
+    {
+        mNormalArrow = new OpenGLArrow(COLOR_RED);
+        mNormalArrow->setScale(0.1);
+    }
+    
+    OpenGLArrow * arrow = (OpenGLArrow *) mNormalArrow;
+    
+    for(int k = 0; k < mNumVerticies; k++)
+    {
+        OpenGLVertexAttributes attr = mVerticies[k];
+        arrow->setPosition(attr.position[0], attr.position[1], attr.position[2]);
+        arrow->setVectorDimensions(attr.normal[0], attr.normal[1], attr.normal[2]);
+        arrow->setScale(0.1f);
+        
+        glm::mat4 transform = view_transform * this->getTransformationMatrix();
+        
+        arrow->drawWithShaderAndTransform(transform);
+    }
 }
 
 

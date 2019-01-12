@@ -145,7 +145,7 @@ void OpenGLDelegate::updateLookAtTransform(void)
 }
 
 
-glm::mat4 OpenGLDelegate::getTransformationMatrix(void)
+glm::mat4 OpenGLDelegate::getViewTransform(void)
 {
     if(true == mTransformationMatrixDirty)
     {

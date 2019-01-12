@@ -10,6 +10,8 @@
 
 #define TWO_PI (M_PI * 2.0)
 
+using namespace glm;
+
 void phiThetaToXyz(float phi, float theta, float outXYZ[])
 {
     float x;
@@ -18,14 +20,14 @@ void phiThetaToXyz(float phi, float theta, float outXYZ[])
     
     // the x and y coordinates of a circle as a function of phi on the 2d plane is
     x = cos(phi);
-    z = sin(phi);
+    y = sin(phi);
     
     // the theta coordinate scales the radius of this circle
     x *= sin(theta);
-    z *= sin(theta);
+    y *= sin(theta);
     
     // z is +1 at theta=0deg, 0 at theta=90deg, -1 at theta=-180deg
-    y = cos(theta);
+    z = cos(theta);
     
     outXYZ[0] = x;
     outXYZ[1] = y;
@@ -49,25 +51,36 @@ OpenGLPrimitive(rgb, texture_filename)
     finishInitializing();
 }
 
-static float wrapPhase(float phase)
+static vec3 returnCartesianFromSpherical(float theta, float phi, vec3 spherical)
 {
-    if (phase > TWO_PI) return phase - TWO_PI;
-    if (phase < 0) return phase + TWO_PI;
-    return phase;
+    vec3 col0 = vec3(sin(theta)*cos(phi), sin(theta)*sin(phi), cos(theta));
+    vec3 col1 = vec3(cos(theta)*cos(phi), cos(theta)*sin(phi),-sin(theta));
+    vec3 col2 = vec3(-sin(phi), cos(phi), 0);
+    
+    mat3 transform = glm::mat3(col0, col1, col2);
+    
+    return transform * spherical;
 }
 
+
 static OpenGLVertexAttributes helperCreateVertexFromPhiThetaRgb(float phi,
-                                                         float theta,
-                                                         const float rgb[3])
+                                                                float theta,
+                                                                const float rgb[3])
 {
     OpenGLVertexAttributes vertex;
     memcpy(&vertex.colors, rgb, sizeof(float)*3);
     
     phiThetaToXyz(phi, theta, vertex.position);
     
-    vertex.textureLocation[0] = (TWO_PI - phi) / TWO_PI;
+    vertex.textureLocation[0] = (phi) / TWO_PI;
     vertex.textureLocation[1] = (M_PI - theta) / M_PI;
 
+    vec3 normal = returnCartesianFromSpherical(theta, phi, vec3(1.0f, 0.0f, 0.0f));
+    
+    vertex.normal[0] = normal.x;
+    vertex.normal[1] = normal.y;
+    vertex.normal[2] = normal.z;
+    
     return vertex;
 }
 

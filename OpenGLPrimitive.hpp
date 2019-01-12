@@ -51,6 +51,7 @@ private:
     bool mFinishedInitializing;
     float mRGB[3];
 
+    OpenGLDrawable * mNormalArrow;
 public:
    
     static OpenGLShader * mShader;
@@ -78,6 +79,8 @@ public:
     void setColorToTextureRatio(float ratio);
     
     virtual void drawWithShaderAndTransform(glm::mat4 transform) final;
+    
+    void drawNormalsWithTransform(glm::mat4 transform);
     
     virtual std::vector<OpenGLVertexAttributes> * getPrismEdge(void)
     {

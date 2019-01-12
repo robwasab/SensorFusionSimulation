@@ -11,7 +11,7 @@
 
 static OpenGLPrimitive * cylinder_face_generator(float rgb[3], const char texture_filename[])
 {
-    return new OpenGLCircle(10, rgb, texture_filename);
+    return new OpenGLCircle(6, rgb, texture_filename);
 }
 
 

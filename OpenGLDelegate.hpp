@@ -122,7 +122,7 @@ public:
 
     void updateLookAtTransform(void);
     
-    glm::mat4 getTransformationMatrix(void);
+    glm::mat4 getViewTransform(void);
     
 };
 

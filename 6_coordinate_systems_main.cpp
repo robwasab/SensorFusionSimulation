@@ -27,6 +27,7 @@
 #include "OpenGLPrismCylinder.hpp"
 #include "OpenGLArrow.hpp"
 #include "OpenGLAxis.hpp"
+#include "OpenGLMath.hpp"
 
 class MyOpenGLDelegate: public OpenGLDelegate
 {
@@ -69,7 +70,7 @@ public:
         mCube = new OpenGLMeshCube();
         mCube->setScale(0.5);
         
-        mSphere = new OpenGLSphere(50, OpenGLPrimitive::COLOR_BLUE, TEXTURE_EARTH);
+        mSphere = new OpenGLSphere(30, OpenGLPrimitive::COLOR_BLUE, TEXTURE_EARTH);
         mSphere->setScale(0.5);
         
         mCone = new OpenGLCone(50, OpenGLPrimitive::COLOR_PURPLE, TEXTURE_WOODEN_CONTAINER);
@@ -82,14 +83,16 @@ public:
         mCylinder->setScale(0.25, 0.5, 0.25);
         
         mArrow = new OpenGLArrow(OpenGLPrimitive::COLOR_RED);
-        mArrow->setScale(0.5);
+        mArrow->setScale(0.25f, 1.0f, 0.25f);
         
         mAxis = new OpenGLAxis();
         mAxis->setScale(0.75);
         
         mLightSource = new OpenGLSphere(20, OpenGLPrimitive::COLOR_YELLOW);
-        mLightSource->setScale(0.5);
+        mLightSource->setScale(0.10);
         mLightSource->setPosition(2, 1, -4);
+        
+        mArrow->setVectorDimensions(2, 1, -4);
     }
     
     void windowFrameBufferResized(GLFWwindow * window, int width, int height)
@@ -102,17 +105,19 @@ public:
         // move back 5 units
         //setCameraOrientation(30, glm::vec3(1.0, 0.0, 0.0));
         
-        glm::mat4 transformation = getTransformationMatrix();
+        glm::mat4 view_transform = getViewTransform();
         
-        mLightSource->drawWithShaderAndTransform(transformation);
+        mLightSource->drawWithShaderAndTransform(view_transform);
         
-        //mSquare->drawWithShaderAndTransform(transformation);
-        //mCube->drawWithShaderAndTransform(transformation);
-        mSphere->drawWithShaderAndTransform(transformation);
-        //mCone->drawWithShaderAndTransform(transformation);
-        //mCylinder->drawWithShaderAndTransform(transformation);
-        //mArrow->drawWithShaderAndTransform(transformation);
-        //mAxis->drawWithShaderAndTransform(transformation);
+        //mSquare->drawWithShaderAndTransform(view_transform);
+        //mCube->drawWithShaderAndTransform(view_transform);
+        mSphere->drawWithShaderAndTransform(view_transform);
+        mSphere->drawNormalsWithTransform(view_transform);
+        
+        //mCone->drawWithShaderAndTransform(view_transform);
+        //mCylinder->drawWithShaderAndTransform(view_transform);
+        //mArrow->drawWithShaderAndTransform(view_transform);
+        //mAxis->drawWithShaderAndTransform(view_transform);
     }
 };
 
