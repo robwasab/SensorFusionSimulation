@@ -33,3 +33,20 @@ OpenGLAxis::~OpenGLAxis()
     delete mYAxis;
     delete mZAxis;
 }
+
+
+void OpenGLAxis::setXMagnitude(float length)
+{
+    mXAxis->setScale(1.0, length, 1.0);
+}
+
+void OpenGLAxis::setYMagnitude(float length)
+{
+    mYAxis->setScale(1.0, length, 1.0);
+}
+
+void OpenGLAxis::setZMagnitude(float length)
+{
+    mZAxis->setScale(1.0, length, 1.0);
+}
+

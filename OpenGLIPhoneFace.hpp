@@ -12,9 +12,10 @@
 #include <stdio.h>
 #include "OpenGLSquare.hpp"
 
-class OpenGLIphoneFace: public OpenGLSquare
+class OpenGLIPhoneFace: public OpenGLSquare
 {
 public:
-    OpenGLIphoneFace();
+    OpenGLIPhoneFace();
 };
+
 #endif /* OpenGLIPhoneFace_hpp */

@@ -8,7 +8,7 @@
 
 #include "OpenGLPrism.hpp"
 
-OpenGLPrism::OpenGLPrism(PrismFaceGenerator generator,
+OpenGLPrism::OpenGLPrism(PrismFaceGenerator * generator,
                          glm::vec3 extrude_direction,
                          float height,
                          float rgb[3],
@@ -17,8 +17,10 @@ OpenGLComposite()
 {
     assert(generator != NULL);
     
-    mBottomFace = generator(rgb, texture_filename);
-    mTopFace = generator(rgb, texture_filename);
+    mBottomFace = generator->getNextFace(rgb, texture_filename);
+    mTopFace = generator->getNextFace(rgb, texture_filename);
+    
+    delete generator;
     
     glm::vec3 translateUp = extrude_direction * height/2.0f;
     glm::vec3 translateDown = extrude_direction * -height/2.0f;

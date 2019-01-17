@@ -75,5 +75,7 @@ void OpenGLArrow::setVectorDimensions(float x, float y, float z)
     
     glm::mat3 rotate = OpenGLMath::calculateRotationMatrix2(start, end_normalized);
     
-    mVectorTransformation = glm::mat4(rotate) * glm::scale(glm::mat4(1.0f), glm::vec3(1.0f, length(end), 1.0f));
+    setScale(1.0, length(end), 1.0);
+    
+    mVectorTransformation = glm::mat4(rotate);
 }

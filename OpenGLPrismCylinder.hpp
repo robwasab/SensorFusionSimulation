@@ -14,8 +14,6 @@
 
 class OpenGLPrismCylinder: public OpenGLPrism
 {
-private:
-    
 public:
     OpenGLPrismCylinder(glm::vec3 extrude_direction=glm::vec3(0.0, 1.0, 0.0),
                         float height=1.0f,

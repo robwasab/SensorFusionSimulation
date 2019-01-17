@@ -18,7 +18,8 @@ static OpenGLDelegate * mDelegate = NULL;
 static int mWidth = -1;
 static int mHeight = -1;
 
-static Queue<MouseEventData> mMouseEventDataQueue(128);
+static Queue<MouseEventData>    mMouseEventDataQueue(16);
+static Queue<KeyboardEventData> mKeyboardEventDataQueue(16);
 
 static void framebuffer_size_callback(GLFWwindow * window, int width, int height)
 {
@@ -90,6 +91,37 @@ static void mouse_button_callback(GLFWwindow * window, int button, int action, i
     mMouseEventDataQueue.add(data);
 }
 
+static void key_callback(GLFWwindow * window, int key, int scancode, int action, int mods)
+{
+    KeyboardEventData data;
+    
+    switch(key)
+    {
+        case GLFW_KEY_R:
+        case GLFW_KEY_SPACE:
+            data.raw_key = key;
+            data.key = (enum KeyboardKey) key;
+            break;
+        default:
+            //printf("unknown key, returning...");
+            return;
+    }
+    
+    switch(action)
+    {
+        case GLFW_PRESS:
+        case GLFW_RELEASE:
+        case GLFW_REPEAT:
+            data.raw_event = action;
+            data.event = (enum KeyboardEvent) action;
+            break;
+        default:
+            return;
+    }
+    
+    mKeyboardEventDataQueue.add(data);
+}
+
 void Utility_startOpenglWithDelegate(OpenGLDelegate * delegate)
 {
     mDelegate = delegate;
@@ -129,6 +161,7 @@ void Utility_startOpenglWithDelegate(OpenGLDelegate * delegate)
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     glfwSetMouseButtonCallback(window, mouse_button_callback);
     glfwSetScrollCallback(window, scroll_wheel_callback);
+    glfwSetKeyCallback(window, key_callback);
     
     assert(mWidth  != -1);
     assert(mHeight != -1);
@@ -178,6 +211,7 @@ void Utility_startOpenglWithDelegate(OpenGLDelegate * delegate)
         mMouseEventDataQueue.add(mouseEvent);
         
         size_t num_mouse_events = mMouseEventDataQueue.size();
+        //printf("num_mouse_events: %zu\n", num_mouse_events);
         
         for(size_t k = 0; k < num_mouse_events; k++)
         {
@@ -186,9 +220,21 @@ void Utility_startOpenglWithDelegate(OpenGLDelegate * delegate)
             mDelegate->handleMouseEvent(mouse_event);
         }
         
+        size_t num_key_events = mKeyboardEventDataQueue.size();
+        //printf("num_key_events: %zu\n", num_key_events);
+        
+        for(size_t k = 0; k < num_key_events; k++)
+        {
+            KeyboardEventData key_event;
+            mKeyboardEventDataQueue.get(&key_event);
+            mDelegate->handleKeyboardEvent(key_event);
+        }
+        
         mDelegate->updateFrame(window, cursor_posx, cursor_posy);
         
         glfwSwapBuffers(window);
+        
+        mDelegate->frameUpdateDone();
     }
     
     glfwTerminate();

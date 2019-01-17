@@ -20,7 +20,9 @@ OpenGLDelegate::OpenGLDelegate(int width, int height, float near_plane, float fa
     updateLookAtTransform();
     mTransformationMatrixDirty = true;
     
-    mState = STATE_CAMERA_IDLE;
+    mCameraState = STATE_CAMERA_IDLE;
+    mUserInputState = STATE_USER_INPUT_ADJUSTS_CAMERA;
+    
     last_cursor_x = 0;
     last_cursor_y = 0;
     
@@ -28,21 +30,25 @@ OpenGLDelegate::OpenGLDelegate(int width, int height, float near_plane, float fa
     mTheta = radians(-90.0f);
     mR = 3;
     mCameraTarget = vec3(0.0f,0.0f,0.0f);
+    
+    mLastFPSMeasTime = glfwGetTime();
+    mMeasuredFPS = 0.0;
+    mFrameCount = 0;
 }
 
 #define PAIR(x,y) ( (x << 16) + y )
 
-void OpenGLDelegate::handleMouseEvent(MouseEventData mouse)
+void OpenGLDelegate::modeOrbitOriginMouseEvent(MouseEventData mouse)
 {
     if(mouse.event == MOUSE_EVENT_RELEASE)
     {
-        mState = STATE_CAMERA_IDLE;
+        mCameraState = STATE_CAMERA_IDLE;
         return;
     }
     switch(mouse.event)
     {
         case MOUSE_EVENT_RELEASE:
-            mState = STATE_CAMERA_IDLE;
+            mCameraState = STATE_CAMERA_IDLE;
             return;
         case MOUSE_EVENT_POSITION:
             break;
@@ -50,18 +56,19 @@ void OpenGLDelegate::handleMouseEvent(MouseEventData mouse)
             break;
     }
     
-    switch(PAIR(mState, mouse.event))
+    switch(PAIR(mCameraState, mouse.event))
     {
         case PAIR(STATE_CAMERA_IDLE, MOUSE_EVENT_POSITION):
             last_cursor_y = mouse.cursor_y;
             last_cursor_x = mouse.cursor_x;
             break;
-        
+            
         case PAIR(STATE_CAMERA_IDLE, MOUSE_EVENT_SCROLLWHEEL):
         {
             printf("scroll wheel [%.3f   %.3f]\n", mouse.scrollwheel_x, mouse.scrollwheel_y);
             float scale = 0.25;
             float newR = mouse.scrollwheel_y * scale + mR;
+            
             if(newR > 0.5)
             {
                 mR = newR;
@@ -71,23 +78,24 @@ void OpenGLDelegate::handleMouseEvent(MouseEventData mouse)
         }
             
         case PAIR(STATE_CAMERA_IDLE, MOUSE_EVENT_PRESS):
-            
+        {
             switch(mouse.button)
             {
                 case MOUSE_BUTTON_LEFT:
-                    mState = STATE_CAMERA_ADJUST_ORIENTATION;
-                    break;
+                    mCameraState = STATE_CAMERA_ADJUST_ORIENTATION;
+                	break;
                 case MOUSE_BUTTON_MIDDLE:
                     printf("middle button pressed!");
-                    break;
+                	break;
                 case MOUSE_BUTTON_RIGHT:
-                    mState = STATE_CAMERA_ADJUST_POSITION;
-                    break;
+                    mCameraState = STATE_CAMERA_ADJUST_POSITION;
+                	break;
                 default:
                     break;
             }
             break;
-        
+        }
+            
         case PAIR(STATE_CAMERA_ADJUST_ORIENTATION, MOUSE_EVENT_POSITION):
         {
             float delta_x = mouse.cursor_x - last_cursor_x;
@@ -106,12 +114,138 @@ void OpenGLDelegate::handleMouseEvent(MouseEventData mouse)
             
         case PAIR(STATE_CAMERA_ADJUST_POSITION, MOUSE_EVENT_POSITION):
         {
-            
-            
+            break;
         }
             
         default:
+        {
             break;
+        }
+    }
+}
+
+void OpenGLDelegate::setCameraOrbitRadius(float radius)
+{
+    assert(radius >= 0);
+    mR = radius;
+    
+    mTransformationMatrixDirty = true;
+}
+
+void OpenGLDelegate::modeRotateObjectMouseEvent(MouseEventData mouse)
+{
+    float scale = 180;
+
+    switch(PAIR(mOrientationState, mouse.event))
+    {
+        case PAIR(STATE_ORIENTATION_IDLE, MOUSE_EVENT_POSITION):
+        {
+            last_cursor_x = mouse.cursor_x;
+            last_cursor_y = mouse.cursor_y;
+            break;
+        }
+        
+        case PAIR(STATE_ORIENTATION_IDLE, MOUSE_EVENT_PRESS):
+        {
+            if(mouse.button == MOUSE_BUTTON_LEFT)
+            {
+                mOrientationState = STATE_ORIENTATION_ADJUST_ROLL_AND_PITCH;
+            }
+            else if(mouse.button == MOUSE_BUTTON_MIDDLE)
+            {
+                mOrientationState = STATE_ORIENTATION_IDLE;
+            }
+            else if(mouse.button == MOUSE_BUTTON_RIGHT)
+            {
+                mOrientationState = STATE_ORIENTATION_ADJUST_YAW_AND_PITCH;
+            }
+            break;
+        }
+        
+        case PAIR(STATE_ORIENTATION_ADJUST_ROLL_AND_PITCH, MOUSE_EVENT_PRESS):
+        {
+            if(mouse.button == MOUSE_BUTTON_LEFT)
+            {
+                mOrientationState = STATE_ORIENTATION_IDLE;
+            }
+            break;
+        }
+        
+        case PAIR(STATE_ORIENTATION_ADJUST_ROLL_AND_PITCH, MOUSE_EVENT_POSITION):
+        {
+            float inverse = -1.0f;
+            mObjectRoll  = (mouse.cursor_x - last_cursor_x) * scale * inverse;
+            mObjectPitch = (mouse.cursor_y - last_cursor_y) * scale * inverse;
+            
+            setOrientationWithYawPitchRoll(mObjectYaw, mObjectPitch, mObjectRoll);
+            break;
+        }
+            
+        case PAIR(STATE_ORIENTATION_ADJUST_YAW_AND_PITCH, MOUSE_EVENT_PRESS):
+        {
+            if(mouse.button == MOUSE_BUTTON_RIGHT)
+            {
+                mOrientationState = STATE_ORIENTATION_IDLE;
+            }
+            break;
+        }
+        
+        case PAIR(STATE_ORIENTATION_ADJUST_YAW_AND_PITCH, MOUSE_EVENT_POSITION):
+        {
+            float inverse = -1.0f;
+            mObjectYaw   = (mouse.cursor_x - last_cursor_x) * scale;
+            mObjectPitch = (mouse.cursor_y - last_cursor_y) * scale * inverse;
+            
+            setOrientationWithYawPitchRoll(mObjectYaw, mObjectPitch, mObjectRoll);
+            break;
+        }
+    }
+}
+
+void OpenGLDelegate::handleMouseEvent(MouseEventData mouse)
+{
+    switch(mUserInputState)
+    {
+        case STATE_USER_INPUT_ADJUSTS_CAMERA:
+            modeOrbitOriginMouseEvent(mouse);
+            break;
+        
+        case STATE_USER_INPUT_ADJUSTS_OBJECT_ORIENTATION:
+            modeRotateObjectMouseEvent(mouse);
+            break;
+    }
+}
+
+void OpenGLDelegate::handleKeyboardEvent(KeyboardEventData keyboard_event_data)
+{
+    if(keyboard_event_data.key   == KEYBOARD_KEY_SPACE &&
+       keyboard_event_data.event == KEYBOARD_EVENT_PRESS)
+    {
+        switch(mUserInputState)
+        {
+            case STATE_USER_INPUT_ADJUSTS_CAMERA:
+                mUserInputState = STATE_USER_INPUT_ADJUSTS_OBJECT_ORIENTATION;
+                mOrientationState = STATE_ORIENTATION_IDLE;
+                
+                printf("Orientation Mode!\n");
+                break;
+                
+            case STATE_USER_INPUT_ADJUSTS_OBJECT_ORIENTATION:
+                mUserInputState = STATE_USER_INPUT_ADJUSTS_CAMERA;
+                mCameraState = STATE_CAMERA_IDLE;
+                
+                printf("Camera Mode!\n");
+                break;
+        }
+    }
+    
+    else if(keyboard_event_data.key   == KEYBOARD_KEY_R &&
+            keyboard_event_data.event == KEYBOARD_EVENT_PRESS)
+    {
+        mObjectYaw   = 0;
+        mObjectPitch = 0;
+        mObjectRoll  = 0;
+        setOrientationWithYawPitchRoll(mObjectYaw, mObjectPitch, mObjectRoll);
     }
 }
 
@@ -144,7 +278,6 @@ void OpenGLDelegate::updateLookAtTransform(void)
     mLookAtTransform = lookAt(position, mCameraTarget, cameraUp);
 }
 
-
 glm::mat4 OpenGLDelegate::getViewTransform(void)
 {
     if(true == mTransformationMatrixDirty)
@@ -161,3 +294,22 @@ glm::mat4 OpenGLDelegate::getViewTransform(void)
     }
     return mTransformationMatrix;
 }
+
+void OpenGLDelegate::frameUpdateDone(void)
+{
+    mFrameCount++;
+    
+    float current_time = glfwGetTime();
+    float delta = current_time - mLastFPSMeasTime;
+    
+    if(delta >= 1.0f)
+    {
+        mMeasuredFPS = mFrameCount / delta;
+        
+        mLastFPSMeasTime = current_time;
+        mFrameCount = 0;
+        
+        //printf("Measured FPS: %.3f\n", mMeasuredFPS);
+    }
+}
+

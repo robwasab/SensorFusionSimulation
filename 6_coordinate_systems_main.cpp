@@ -30,7 +30,7 @@
 #include "OpenGLMath.hpp"
 #include "OpenGLCircle.hpp"
 #include "OpenGLSquare.hpp"
-#include "OpenGLIPhoneFace.hpp"
+#include "OpenGLPrismIPhone.hpp"
 
 class MyOpenGLDelegate: public OpenGLDelegate
 {
@@ -44,7 +44,7 @@ private:
     OpenGLCircle * mCircle;
     OpenGLSquare * mSquare;
     OpenGLSphere * mLightSource;
-    OpenGLIphoneFace * mIphoneFace;
+    OpenGLPrismIPhone * mIphone;
 public:
     
     MyOpenGLDelegate():
@@ -99,13 +99,27 @@ public:
         mArrow->setVectorDimensions(2, 1, -4);
         
         mCircle = new OpenGLCircle(4, OpenGLPrimitive::COLOR_GREEN);
-        
-        mIphoneFace = new OpenGLIphoneFace();
+     
+        mIphone = new OpenGLPrismIPhone();
     }
     
     void windowFrameBufferResized(GLFWwindow * window, int width, int height)
     {
         glViewport(0, 0, width, height);
+    }
+    
+    void setOrientationWithYawPitchRoll(float yaw, float pitch, float roll)
+    {
+        printf("YAW: %.3f   PITCH: %.3f   ROLL: %.3f\n", yaw, pitch, roll);
+        
+        glm::quat quatYaw   = OpenGLDrawable::quaternionFromAngleAxis(yaw,   ROTATION_YAXIS);
+        glm::quat quatPitch = OpenGLDrawable::quaternionFromAngleAxis(pitch, ROTATION_XAXIS);
+        glm::quat quatRoll  = OpenGLDrawable::quaternionFromAngleAxis(roll,  ROTATION_ZAXIS);
+        
+        // the multiplication sequence is important
+        // in the program, multiplication is evaluated from the left to the right
+        // starting from quatYaw
+        mIphone->setOrientation(quatYaw * quatPitch * quatRoll);
     }
     
     void updateFrame(GLFWwindow * window, double cursor_posx, double cursor_posy)
@@ -116,9 +130,9 @@ public:
         glm::mat4 view_transform = getViewTransform();
         
         mLightSource->drawWithShaderAndTransform(view_transform);
+        mIphone->drawWithShaderAndTransform(view_transform);
         
         //mSquare->drawWithShaderAndTransform(view_transform);
-        mIphoneFace->drawWithShaderAndTransform(view_transform);
         //mCube->drawWithShaderAndTransform(view_transform);
         //mSphere->drawWithShaderAndTransform(view_transform);
         //mCircle->drawWithShaderAndTransform(view_transform);

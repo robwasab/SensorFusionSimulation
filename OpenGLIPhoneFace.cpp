@@ -8,10 +8,9 @@
 
 #include "OpenGLIPhoneFace.hpp"
 
-OpenGLIphoneFace::OpenGLIphoneFace():
+OpenGLIPhoneFace::OpenGLIPhoneFace():
 OpenGLSquare(OpenGLPrimitive::COLOR_GREY, TEXTURE_IPHONE_FACE)
 {
     setOrientation(180, ROTATION_ZAXIS);
     addOrientation(180, ROTATION_YAXIS);
-    setScale(0.5, 1.0, 1.0);
 }

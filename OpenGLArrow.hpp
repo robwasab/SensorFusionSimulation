@@ -33,8 +33,7 @@ public:
     virtual void addPosition(float x, float y, float z) override;
     virtual glm::mat4 getTransformationMatrix(void) override;
     
-    void setVectorDimensions(float x, float y, float z);
-    
+    void setVectorDimensions(float x, float y, float z);    
 };
 
 #endif /* OpenGLArrow_hpp */

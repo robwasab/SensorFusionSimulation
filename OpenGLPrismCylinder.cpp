@@ -9,17 +9,21 @@
 #include "OpenGLPrismCylinder.hpp"
 #include "OpenGLCircle.hpp"
 
-static OpenGLPrimitive * cylinder_face_generator(float rgb[3], const char texture_filename[])
-{
-    return new OpenGLCircle(6, rgb, texture_filename);
-}
 
+class CylinderFaceGenerator: public OpenGLPrism::PrismFaceGenerator
+{
+public:
+    OpenGLPrimitive * getNextFace(float rgb[3], const char texture_filename[])
+    {
+        return new OpenGLCircle(6, rgb, texture_filename);
+    }
+};
 
 OpenGLPrismCylinder::OpenGLPrismCylinder(glm::vec3 extrude_direction,
                                          float height,
                                          float rgb[3],
                                          const char texture_filename[]):
-OpenGLPrism(cylinder_face_generator,
+OpenGLPrism(new CylinderFaceGenerator(),
             extrude_direction,
             height,
             rgb,

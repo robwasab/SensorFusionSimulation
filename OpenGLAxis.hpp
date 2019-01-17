@@ -24,6 +24,10 @@ public:
     
     OpenGLAxis();
     ~OpenGLAxis();
+    
+    void setXMagnitude(float length);
+    void setYMagnitude(float length);
+    void setZMagnitude(float length);
 };
 
 #endif /* OpenGLAxis_hpp */

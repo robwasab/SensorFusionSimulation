@@ -21,6 +21,11 @@
 
 #define TEXTURE_IPHONE_FACE "/Users/robbytong/Documents/OpenGL/Tutorials/LearnOpenGL/XCode/iphone_face.jpg"
 
+#define TEXTURE_IPHONE_BACK "/Users/robbytong/Documents/OpenGL/Tutorials/LearnOpenGL/XCode/iphone_back.jpg"
+
+#define TEXTURE_IPHONE_METAL "/Users/robbytong/Documents/OpenGL/Tutorials/LearnOpenGL/XCode/aluminum.jpg"
+
+
 struct OpenGLVertexAttributes
 {
     float position[3];

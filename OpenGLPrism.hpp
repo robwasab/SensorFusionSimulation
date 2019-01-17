@@ -15,8 +15,6 @@
 
 class OpenGLPrism: public OpenGLComposite
 {
-    typedef OpenGLPrimitive * (*PrismFaceGenerator)(float rgb[3], const char texture_filename[]);
-
 private:
     OpenGLPrismWall * mWall;
     OpenGLPrimitive * mBottomFace;
@@ -24,7 +22,16 @@ private:
     float mRgb[3];
     
 public:
-    OpenGLPrism(PrismFaceGenerator generator,
+    class PrismFaceGenerator
+    {
+    public:
+        virtual ~PrismFaceGenerator()
+        {
+        }
+        virtual OpenGLPrimitive * getNextFace(float rgb[3], const char texture_filename[]) = 0;
+    };
+    
+    OpenGLPrism(PrismFaceGenerator * generator,
                 glm::vec3 extrude_direction=glm::vec3(0.0, 1.0, 0.0),
                 float height=1.0f,
                 float rgb[3]=NULL,
