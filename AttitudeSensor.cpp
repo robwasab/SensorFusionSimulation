@@ -8,9 +8,65 @@
 
 #include "AttitudeSensor.hpp"
 
-AttitudeSensor::AttitudeSensor(glm::quat initial_attitude)
+#define MAGNETOM_COMPENSATION_ENABLED         1
+#define GYROBIAS_COMPENSATION_ENABLED         1
+
+#define BETA_AUGMENTATION_FACTOR            3.0f
+
+AttitudeSensor::AttitudeSensor(glm::quat initial_attitude, float fs):
+    mWalkingDetector(fs)
 {
     mAttitude = initial_attitude;
+    
+    // calculate the expected value of the gyro noise for one axis
+    float gyro_noise_expected_value_axis = glm::sqrt(SQU(GYRO_NOISE_STD_DEV) + SQU(GYRO_NOISE_MEAN));
+    
+    // multiply by sqrt(3.0) to get the expected noise for all three combined axes
+    float gyro_noise_expected_value = glm::sqrt(3.0/4.0) * gyro_noise_expected_value_axis;
+    
+    #if 1 == GYROBIAS_COMPENSATION_ENABLED
+    
+    mBeta = gyro_noise_expected_value * BETA_AUGMENTATION_FACTOR;
+    mBetaReference = mBeta;
+    
+    printf("Attitude beta: %.3f\n", mBeta);
+    
+    // guessed this value - bias can change at a rate of x deg/sec
+    //mZeta = glm::radians(5.0f);
+    #warning "mZeta is zero!"
+    mZeta = 0.0;
+    
+    #else
+    
+    mBeta = 0;
+    mZeta = 0;
+    #endif
+    
+    mAngularVelocityErrorBias = glm::quat(0.0f, 0.0f, 0.0f, 0.0f);
+    
+    #define POW2 8
+    mGraphs[0] = new OpenGLTimeSeriesGraph(POW2, "X Axis");
+    mGraphs[1] = new OpenGLTimeSeriesGraph(POW2, "Y Axis");
+    mGraphs[2] = new OpenGLTimeSeriesGraph(POW2, "Z Axis");
+}
+
+AttitudeSensor::~AttitudeSensor()
+{
+    delete mGraphs[0];
+    delete mGraphs[1];
+    delete mGraphs[2];
+}
+
+void AttitudeSensor::enableGyroOnly(void)
+{
+    mGyroOnly = true;
+    mBeta = 0.0;
+}
+
+void AttitudeSensor::disableGyroOnly(void)
+{
+    mGyroOnly = false;
+    mBeta = mBetaReference;
 }
 
 void AttitudeSensor::sensorUpdate(float time_step,
@@ -18,37 +74,78 @@ void AttitudeSensor::sensorUpdate(float time_step,
                                   float accel_data[3],
                                   float mag_data[3])
 {
-    glm::quat angular_velocity = glm::quat(0.0f, gyro_data[0], gyro_data[1], gyro_data[2]);
+    mWalkingDetector.updateWithSensorData(gyro_data, accel_data, mag_data);
     
-    //glm::quat next_attitude = mAttitude + (mAttitude * angular_velocity) * time_step * 0.5f;
+    mGraphs[0]->updateWithNewSample(gyro_data[2]);
     
-    //next_attitude = glm::normalize(next_attitude);
-    
-    //mAttitude = next_attitude;
-    
-    
-    glm::vec3 world_gravity = glm::vec3(0.0f, -1.0f,  0.0f);
-    glm::vec3 world_north   = glm::vec3(0.0f,  0.0f, -1.0f);
+    // Attitude determination algorithm
     
     glm::vec3 accel_measure = glm::vec3(accel_data[0], accel_data[1], accel_data[2]);
     glm::vec3 magno_measure = glm::vec3(  mag_data[0],   mag_data[1],   mag_data[2]);
     
-    glm::quat gravity_error_vector =
+    // reference field vectors
+    glm::vec3 world_gravity = glm::vec3(0.0f, -1.0f,  0.0f);
+    
+    #if 1 == MAGNETOM_COMPENSATION_ENABLED
+    
+    // magnometer compensation
+    glm::vec3 magno_measure_wrt_earth = glm::toMat3(mAttitude) * magno_measure;
+    
+    float horizontal_plane_magnitude = glm::sqrt(SQU(magno_measure_wrt_earth.z) +
+                                                 SQU(magno_measure_wrt_earth.x));
+    
+    glm::vec3 world_north   = glm::vec3(0.0f,  magno_measure_wrt_earth.y, -horizontal_plane_magnitude);
+    
+    #else
+    
+    glm::vec3 world_north   = glm::vec3(0.0f, 0.0f, -1.0f);
+    
+    #endif
+    
+    // gradient descent optimization using accel and magnotometer
+    glm::quat gravity_error_gradient =
         calculateErrorGradient(world_gravity, accel_measure);
     
-    glm::quat magnometer_error_vector =
+    glm::quat magnometer_error_gradient =
         calculateErrorGradient(world_north, magno_measure);
     
-    float step_size = (0.5 + length(angular_velocity)) * time_step;
+    glm::quat error_gradient = gravity_error_gradient + magnometer_error_gradient;
     
-    glm::quat error_vector = gravity_error_vector + magnometer_error_vector;
+    glm::quat error_gradient_norm = glm::normalize(error_gradient);
+
+    // gyroscope bias compensation
+    glm::quat angular_velocity_error = 2.0f * (glm::conjugate(mAttitude) * error_gradient_norm);
+    angular_velocity_error.w = 0;
     
-    if(length(error_vector) > 1E-3)
-    {
-        float scale = 1.25f;
-        mAttitude -= scale * step_size * glm::normalize(error_vector);
-        mAttitude = glm::normalize(mAttitude);
-    }
+    mAngularVelocityErrorBias += angular_velocity_error * time_step * mZeta;
+    
+    #if 0
+    printf("gyro bias: %.3f   %.3f   %.3f\n",
+           glm::degrees(mAngularVelocityErrorBias.x),
+           glm::degrees(mAngularVelocityErrorBias.y),
+           glm::degrees(mAngularVelocityErrorBias.z));
+    #endif
+    
+    // gyroscope calculations
+    glm::quat angular_velocity_sensor = glm::quat(0.0f, gyro_data[0], gyro_data[1], gyro_data[2]);
+    
+    #if 0
+    printf("gyro meas: %.3f   %.3f   %.3f\n",
+           glm::degrees(angular_velocity_sensor.x),
+           glm::degrees(angular_velocity_sensor.y),
+           glm::degrees(angular_velocity_sensor.z));
+    #endif
+    
+    angular_velocity_sensor -= mAngularVelocityErrorBias;
+    
+    glm::quat angular_velocity_wrt_earth = (mAttitude * angular_velocity_sensor) * 0.5f;
+    
+    glm::quat attitude_derivative;
+    attitude_derivative = angular_velocity_wrt_earth;
+    attitude_derivative-= mBeta * error_gradient_norm;
+    
+    mAttitude += attitude_derivative * time_step;
+    mAttitude = glm::normalize(mAttitude);
 }
 
 void print_vec4(const char name[], glm::vec4 v)
@@ -111,4 +208,27 @@ glm::quat AttitudeSensor::calculateErrorGradient(glm::vec3 world, glm::vec3 sens
 glm::quat AttitudeSensor::getAttitude(void)
 {
     return mAttitude;
+}
+
+void AttitudeSensor::getSensorGraphs(OpenGLGraph * graphs[3])
+{
+    graphs[0] = mGraphs[0];
+    graphs[1] = mGraphs[1];
+    graphs[2] = mWalkingDetector.getSensorDataGraph();
+}
+
+void AttitudeSensor::setFFTMode(void)
+{
+    mGraphs[0]->setFFTMode();
+    mGraphs[1]->setFFTMode();
+    mGraphs[2]->setFFTMode();
+    mWalkingDetector.setFFTMode();
+}
+
+void AttitudeSensor::setTimeMode(void)
+{
+    mGraphs[0]->setTimeMode();
+    mGraphs[1]->setTimeMode();
+    mGraphs[2]->setTimeMode();
+    mWalkingDetector.setTimeMode();
 }

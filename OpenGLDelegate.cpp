@@ -67,7 +67,7 @@ void OpenGLDelegate::modeOrbitOriginMouseEvent(MouseEventData mouse)
         {
             printf("scroll wheel [%.3f   %.3f]\n", mouse.scrollwheel_x, mouse.scrollwheel_y);
             float scale = 0.25;
-            float newR = mouse.scrollwheel_y * scale + mR;
+            float newR = mouse.scrollwheel_y * scale * (0.05 * mR) + mR;
             
             if(newR > 0.5)
             {
@@ -275,6 +275,8 @@ void OpenGLDelegate::updateLookAtTransform(void)
     vec3 thetaUnit = vec3(0.0f, 1.0f, 0.0f);
     vec3 cameraUp = returnCartesianFromSpherical(thetaUnit);
     
+    position += mCameraTarget;
+    
     mLookAtTransform = lookAt(position, mCameraTarget, cameraUp);
 }
 
@@ -287,7 +289,7 @@ glm::mat4 OpenGLDelegate::getViewTransform(void)
         
         // the camera coordinate system treats z as the axis pointing upwards.
         // however, in open gl, z points out of the screen.
-        mTransformationMatrix = rotate(mTransformationMatrix, radians(90.0f), vec3(1.0f, 0.0f, 0.0f));
+        mTransformationMatrix = rotate(mTransformationMatrix, radians(90.0f), ROTATION_XAXIS);
         
         mTransformationMatrix = mPerspectiveTransform * mLookAtTransform * mTransformationMatrix;
         mTransformationMatrixDirty = false;
@@ -311,5 +313,21 @@ void OpenGLDelegate::frameUpdateDone(void)
         
         //printf("Measured FPS: %.3f\n", mMeasuredFPS);
     }
+}
+
+void OpenGLDelegate::windowClosed(void)
+{
+    
+}
+
+glm::vec3 OpenGLDelegate::getCameraTarget(void)
+{
+    return mCameraTarget;
+}
+
+void OpenGLDelegate::setCameraTarget(glm::vec3 target)
+{
+    mCameraTarget = glm::mat3(rotate(glm::mat4(1.0f), radians(90.0f), ROTATION_XAXIS)) * target;
+    mTransformationMatrixDirty = true;
 }
 

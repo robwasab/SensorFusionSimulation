@@ -33,6 +33,8 @@ float OpenGLPrimitive::COLOR_PURPLE[]     = {0.4, 0.0, 1.0};
 float OpenGLPrimitive::COLOR_DARK_GREEN[] = {0.0, 0.6, 0.0};
 float OpenGLPrimitive::COLOR_PINK[]       = {0.8, 0.4, 1.0};
 float OpenGLPrimitive::COLOR_GREY[]       = {0.5, 0.5, 0.5};
+float OpenGLPrimitive::COLOR_BLACK[]      = {0.0, 0.0, 0.0};
+float OpenGLPrimitive::COLOR_WHITE[]      = {1.0, 1.0, 1.0};
 
 OpenGLPrimitive::OpenGLPrimitive(float rgb[], const char texture_filename[])
 {    
@@ -44,7 +46,7 @@ OpenGLPrimitive::OpenGLPrimitive(float rgb[], const char texture_filename[])
     }
     else
     {
-        printf("OpenGLPrimitive shader already intialized!\n");
+        //printf("OpenGLPrimitive shader already intialized!\n");
     }
     
     mTextureId = 0;
@@ -249,6 +251,8 @@ static void initalizeTexture(const char filename[],
     
     glGenTextures(1, texture_id);
     glBindTexture(GL_TEXTURE_2D, *texture_id);
+    
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
     
     glTexImage2D(/*target*/ GL_TEXTURE_2D,
                  /*level*/  0,

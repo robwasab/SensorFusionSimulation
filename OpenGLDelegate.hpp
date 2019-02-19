@@ -16,6 +16,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+#include "OpenGLArrow.hpp"
 #include "Queue.h"
 
 enum MouseEvent
@@ -48,6 +49,13 @@ enum KeyboardKey
 {
     KEYBOARD_KEY_SPACE = GLFW_KEY_SPACE,
     KEYBOARD_KEY_R     = GLFW_KEY_R,
+    KEYBOARD_KEY_W     = GLFW_KEY_W,
+    KEYBOARD_KEY_F     = GLFW_KEY_F,
+    KEYBOARD_KEY_G     = GLFW_KEY_G,
+    KEYBOARD_KEY_UP    = GLFW_KEY_UP,
+    KEYBOARD_KEY_DOWN  = GLFW_KEY_DOWN,
+    KEYBOARD_KEY_LEFT  = GLFW_KEY_LEFT,
+    KEYBOARD_KEY_RIGHT = GLFW_KEY_RIGHT,
 };
 
 enum KeyboardEvent
@@ -183,6 +191,21 @@ public:
      */
     virtual void frameUpdateDone(void);
     
+    /**
+     * OpenGL window closed.
+     */
+    virtual void windowClosed(void);
+    
+    /**
+     * Set the camera target.
+     */
+    virtual void setCameraTarget(glm::vec3 target) final;
+    
+    /**
+     * Get the camera target.
+     */
+    virtual glm::vec3 getCameraTarget(void) final;
+    
     glm::vec3 cameraPositionCartesian(void);
     
     glm::vec3 returnCartesianFromSpherical(glm::vec3 spherical);
@@ -190,6 +213,7 @@ public:
     void updateLookAtTransform(void);
     
     glm::mat4 getViewTransform(void);
+    
 };
 
 #endif /* OpenGLDelegate_hpp */

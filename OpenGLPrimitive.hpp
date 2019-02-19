@@ -40,7 +40,7 @@ typedef struct OpenGLVertexAttributes OpenGLVertexAttributes;
 
 class OpenGLPrimitive: public OpenGLDrawable
 {
-
+    
 private:
     float mColorTextureRatio;
     
@@ -61,6 +61,21 @@ private:
     OpenGLDrawable * mNormalArrow;
 public:
    
+    enum VERTEX_INTERPRET_MODE
+    {
+        VERTEX_INTERPRET_MODE_TRIANGLES         = GL_TRIANGLES,
+        VERTEX_INTERPRET_MODE_TRIANGLE_STRIP    = GL_TRIANGLE_STRIP,
+        VERTEX_INTERPRET_MODE_TRIANGLE_FAN      = GL_TRIANGLE_FAN,
+        VERTEX_INTERPRET_MODE_LINES             = GL_LINES,
+        VERTEX_INTERPRET_MODE_LINE_STRIP        = GL_LINE_STRIP,
+    };
+    
+    enum POLYGON_FILL_MODE
+    {
+        POLYGON_FILL_MODE_OUTLINE = GL_LINE,
+        POLYGON_FILL_MODE_FILL    = GL_FILL,
+    };
+
     static OpenGLShader * mShader;
     static float COLOR_BLUE[];
     static float COLOR_RED[];
@@ -71,6 +86,8 @@ public:
     static float COLOR_DARK_GREEN[];
     static float COLOR_PINK[];
     static float COLOR_GREY[];
+    static float COLOR_BLACK[];
+    static float COLOR_WHITE[];
     
     OpenGLPrimitive(float rgb[]=NULL, const char texture_filename[]=NULL);
     virtual ~OpenGLPrimitive();

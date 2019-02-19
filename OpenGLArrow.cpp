@@ -31,10 +31,12 @@ OpenGLComposite()
     
     mArrowHead->addPosition(0.0f, arrow_body_height, 0.0f);
     
-    mArrowBody->addPosition(0.0f, arrow_body_height/2.0f, 0.0f);
+    //mArrowBody->addPosition(0.0f, arrow_body_height, 0.0f);
     
     mVectorTransformation = glm::mat4(1.0f);
     mVectorTranslation = glm::mat4(1.0f);
+    
+    mThickness = 1.0f;
     
     this->addDrawable(mArrowBody);
     this->addDrawable(mArrowHead);
@@ -57,6 +59,13 @@ void OpenGLArrow::setPosition(float x, float y, float z)
     addPosition(x, y, z);
 }
 
+void OpenGLArrow::setThickness(float thickness)
+{
+    assert(thickness > 0.0f);
+    
+    mThickness = thickness;
+}
+
 void OpenGLArrow::addPosition(float x, float y, float z)
 {
     mVectorTranslation = glm::translate(mVectorTranslation, glm::vec3(x, y, z));
@@ -75,7 +84,7 @@ void OpenGLArrow::setVectorDimensions(float x, float y, float z)
     
     glm::mat3 rotate = OpenGLMath::calculateRotationMatrix2(start, end_normalized);
     
-    setScale(1.0, length(end), 1.0);
+    setScale(mThickness, length(end), mThickness);
     
     mVectorTransformation = glm::mat4(rotate);
 }

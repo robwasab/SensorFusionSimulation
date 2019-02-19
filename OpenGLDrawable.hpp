@@ -45,6 +45,7 @@ public:
     virtual void setOrientation(glm::quat orientation);
     virtual void setOrientation(float degrees, glm::vec3 rotation_axis);
     virtual void setPosition(float x, float y, float z);
+    virtual void setPosition(glm::vec3 position);
     
     virtual void addOrientation(float degrees, glm::vec3 rotation_axis);
     virtual void addPosition(float x, float y, float z);

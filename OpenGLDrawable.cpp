@@ -48,8 +48,13 @@ void OpenGLDrawable::setScale(float scale)
 
 void OpenGLDrawable::setPosition(float x, float y, float z)
 {
+    setPosition(glm::vec3(x, y, z));
+}
+
+void OpenGLDrawable::setPosition(glm::vec3 position)
+{
     mPosition = glm::mat4(1.0);
-    mPosition = glm::translate(mPosition, glm::vec3(x, y, z));
+    mPosition = glm::translate(mPosition, position);
     mTransformationMatrixDirty = true;
 }
 

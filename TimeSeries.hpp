@@ -1,41 +1,52 @@
 //
-//  OpenGLGraphData.hpp
+//  TimeSeries.hpp
 //  OpenGLTutorial
 //
 //  Created by Robby Tong on 2/16/19.
 //  Copyright © 2019 Robby Tong. All rights reserved.
 //
 
-#ifndef OpenGLGraphData_hpp
-#define OpenGLGraphData_hpp
+#ifndef TimeSeries_hpp
+#define TimeSeries_hpp
 
 #include <stdio.h>
+#include <fftw3.h>
 
-class OpenGLGraphData
+class TimeSeries
 {
 private:
     size_t mDataLen;
     float * mTimeData;
     float * mFFTOutputData;
-    float * mFFTStagedTimeData;
     float * mData;
     
-public:
-    OpenGLGraphData(size_t len);
+    // fft var
+    fftwf_plan fwrd;
     
-    ~OpenGLGraphData();
+    bool mLoggingEnabled;
+    
+    void calculate_fft(void);
+    
+public:
+    TimeSeries(int pow2);
+    
+    ~TimeSeries();
     
     // Incomming data point
     void updateWithNewSample(float sample);
     
-    // Get the data to be plotted
-    void getDataAndLength(const float * data, size_t * len);
+    // Return data length
+    size_t getDataSize(void);
+    
+    // Get the data at index
+    float getDataAtIndex(size_t index);
     
     // Data is read back as FFT magnitude
-    void setFFTMode(void);
+    void setFFTMode(bool logging_enabled=false);
     
     // Data is read back as Time series
     void setTimeMode(void);
+    
 };
 
-#endif /* OpenGLGraphData_hpp */
+#endif /* TimeSeries.hpp */

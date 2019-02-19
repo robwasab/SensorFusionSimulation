@@ -10,5 +10,28 @@
 #define HalfBandFilter_hpp
 
 #include <stdio.h>
+#include "AllPass.hpp"
+
+class HalfBandFilter
+{
+private:
+    typedef AllPass * AllPassRef;
+    
+    AllPassRef * mFilterBankA;
+    AllPassRef * mFilterBankB;
+    
+    size_t mFilterBankALen;
+    size_t mFilterBankBLen;
+    
+    double mLastInput;
+    
+public:
+    HalfBandFilter(void);
+    ~HalfBandFilter();
+    
+    float work(float sample);
+    
+    void impulseResponse(float data[], size_t len);
+};
 
 #endif /* HalfBandFilter_hpp */

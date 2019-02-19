@@ -22,8 +22,8 @@ OpenGLComposite()
     
     delete generator;
     
-    glm::vec3 translateUp = extrude_direction * height/2.0f;
-    glm::vec3 translateDown = extrude_direction * -height/2.0f;
+    glm::vec3 translateUp = extrude_direction * height;
+    glm::vec3 translateDown = extrude_direction * 0.0f;
     
     mWall = new OpenGLPrismWall(mBottomFace,
                                 extrude_direction,

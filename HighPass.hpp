@@ -4,7 +4,7 @@
 class HighPass
 {
 public:
-    HighPass(float tau, float fs)
+    HighPass(float fs, float tau)
     {
         k = tau * fs / (tau * fs + 1);
         in_last = 0.0;

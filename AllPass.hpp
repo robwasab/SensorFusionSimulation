@@ -11,4 +11,18 @@
 
 #include <stdio.h>
 
+class AllPass
+{
+private:
+    double mGain;
+    double mA;
+    double mB;
+    double mLastX[3];
+    double mLastY[3];
+public:
+    AllPass(double gain, double zero, double pole);
+    
+    float work(float sample);
+};
+
 #endif /* AllPass_hpp */

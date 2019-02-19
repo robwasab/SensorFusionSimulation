@@ -22,6 +22,7 @@ private:
     OpenGLCone * mArrowHead;
     OpenGLPrismCylinder * mArrowBody;
     
+    float mThickness;
     glm::mat4 mVectorTranslation;
     glm::mat4 mVectorTransformation;
     
@@ -33,6 +34,7 @@ public:
     virtual void addPosition(float x, float y, float z) override;
     virtual glm::mat4 getTransformationMatrix(void) override;
     
+    void setThickness(float thickness);
     void setVectorDimensions(float x, float y, float z);    
 };
 

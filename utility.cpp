@@ -97,7 +97,14 @@ static void key_callback(GLFWwindow * window, int key, int scancode, int action,
     
     switch(key)
     {
+        case GLFW_KEY_W:
+        case GLFW_KEY_G:
         case GLFW_KEY_R:
+        case GLFW_KEY_F:
+        case GLFW_KEY_UP:
+        case GLFW_KEY_DOWN:
+        case GLFW_KEY_LEFT:
+        case GLFW_KEY_RIGHT:
         case GLFW_KEY_SPACE:
             data.raw_key = key;
             data.key = (enum KeyboardKey) key;
@@ -179,6 +186,8 @@ void Utility_startOpenglWithDelegate(OpenGLDelegate * delegate)
     glClearColor(red, green, blue, alpha);
     
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
     mDelegate->initialized(window);
     
