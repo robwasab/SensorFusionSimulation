@@ -51,9 +51,10 @@ private:
     AttitudeSensor * mAttitudeSensor;
     
     // random noise generator
-    std::default_random_engine mNoiseGenerator;
-    std::normal_distribution<float> mNoiseDistribution;
-    
+    std::default_random_engine mNoiseSource;
+    std::normal_distribution<float> mGyroNoiseDist;
+    std::normal_distribution<float> mAccelNoiseDist;
+    std::normal_distribution<float> mMagnoNoiseDist;
 public:
     
     MyOpenGLDelegate():
@@ -96,9 +97,9 @@ public:
         
         setCameraOrbitRadius(7.0f);
         
-        float noise_std = 0.1;
-        float noise_mean = 0.0;
-        mNoiseDistribution = std::normal_distribution<float>(noise_mean, noise_std);
+        mGyroNoiseDist = std::normal_distribution<float>(GYRO_NOISE_MEAN, GYRO_NOISE_STD_DEV);
+        mAccelNoiseDist = std::normal_distribution<float>(ACCEL_NOISE_MEAN, GYRO_NOISE_STD_DEV);
+        mMagnoNoiseDist = std::normal_distribution<float>(MAGNO_NOISE_MEAN, MAGNO_NOISE_STD_DEV);
     }
     
     void windowFrameBufferResized(GLFWwindow * window, int width, int height)
@@ -144,9 +145,9 @@ public:
         mLastIphoneOrientation = mIphoneUser->getOrientationAsQuaternion();
         
         // noise
-        angular_velocity.x += mNoiseDistribution(mNoiseGenerator);
-        angular_velocity.y += mNoiseDistribution(mNoiseGenerator);
-        angular_velocity.z += mNoiseDistribution(mNoiseGenerator);
+        angular_velocity.x += mGyroNoiseDist(mNoiseSource);
+        angular_velocity.y += mGyroNoiseDist(mNoiseSource);
+        angular_velocity.z += mGyroNoiseDist(mNoiseSource);
         
         assert(gyro_sensor_data != NULL);
         gyro_sensor_data[0] = angular_velocity.x;
@@ -181,9 +182,9 @@ public:
         
         assert(accel_sensor_data != NULL);
         
-        sensor_gravity_vector.x += mNoiseDistribution(mNoiseGenerator);
-        sensor_gravity_vector.y += mNoiseDistribution(mNoiseGenerator);
-        sensor_gravity_vector.z += mNoiseDistribution(mNoiseGenerator);
+        sensor_gravity_vector.x += mAccelNoiseDist(mNoiseSource);
+        sensor_gravity_vector.y += mAccelNoiseDist(mNoiseSource);
+        sensor_gravity_vector.z += mAccelNoiseDist(mNoiseSource);
         
         accel_sensor_data[0] = sensor_gravity_vector.x;
         accel_sensor_data[1] = sensor_gravity_vector.y;
@@ -198,13 +199,26 @@ public:
     {
         glm::vec3 world_magnometer_vector = glm::vec3(0.0f, 0.0f, -1.0f);
         
+        glm::mat4 magnetometer_distortion;
+        
+        magnetometer_distortion = glm::rotate(glm::mat4(1.0f),
+                                              glm::radians(MAGNETOMETER_YAW_DISTORTION_DEGREES),
+                                              ROTATION_YAXIS);
+        
+        magnetometer_distortion = glm::rotate(magnetometer_distortion,
+                                              glm::radians(MAGNETOMETER_PITCH_DISTORTION_DEGREES),
+                                              ROTATION_XAXIS);
+        
+        world_magnometer_vector = glm::mat3(magnetometer_distortion) * world_magnometer_vector;
+        
+        
         glm::vec3 sensor_magnometer_vector = calculateWorldToSensorTransformation() * world_magnometer_vector;
         
         assert(mag_sensor_data != NULL);
         
-        sensor_magnometer_vector.x += mNoiseDistribution(mNoiseGenerator);
-        sensor_magnometer_vector.y += mNoiseDistribution(mNoiseGenerator);
-        sensor_magnometer_vector.z += mNoiseDistribution(mNoiseGenerator);
+        sensor_magnometer_vector.x += mMagnoNoiseDist(mNoiseSource);
+        sensor_magnometer_vector.y += mMagnoNoiseDist(mNoiseSource);
+        sensor_magnometer_vector.z += mMagnoNoiseDist(mNoiseSource);
         
         mag_sensor_data[0] = sensor_magnometer_vector.x;
         mag_sensor_data[1] = sensor_magnometer_vector.y;
